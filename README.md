@@ -1,4 +1,9 @@
-### Hi there 👋
+## Hi there 👋
+
+I'm just only a developer from Costa Rica and I love do new things 😁
+
+- ☄ I'm in [StackShare.io](https://stackshare.io/carlosmmairena)
+- 📷 Also you can visit my [Instagram](https://instagram.com/carlosmmairena) 
 
 <!--
 **carlosmmairena/carlosmmairena** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
