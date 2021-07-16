@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Carlos Mairena</h1>
 <h3 align="center">A passionate developer from Costa Rica</h3>
-<br />
-- 🌱 I’m currently learning about **Hexagonal Architecture**
+
+- 🌱 I’m currently learning about **Hexagonal Architecture**  
 
 - 💬 Ask me about **PHP, Python, Java or GNU/Linux**
 
