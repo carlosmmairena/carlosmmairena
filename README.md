@@ -106,5 +106,5 @@
 </p>
 
 <p>
-    <img align="right" src="https://github-readme-streak-stats.herokuapp.com/?user=carlosmmairena&theme=vue&hide_border=true" alt="carlosmmairena" />
+    <img align="right" src="https://github-readme-streak-stats.herokuapp.com/?user=carlosmmairena&theme=vue&hide_border=false" alt="carlosmmairena" />
 </p>
