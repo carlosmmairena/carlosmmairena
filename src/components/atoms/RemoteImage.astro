@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
     src: string;
     alt: string;
@@ -17,5 +19,5 @@ const {
 export const profileImage = "https://media.licdn.com/dms/image/v2/D4E03AQHsq8HFuOqvTg/profile-displayphoto-shrink_800_800/B4EZahQ9f.GQAg-/0/1746462300723?e=1759363200&v=beta&t=zdA5HIMXx4l-G-dOtP6BdLNgbsywvQJnbwK33pzw3GY";
 ---
 
-<img src={src} alt={alt} class={className} loading={loading} {...props} />
+<Image alt={alt} src={src} class={className} loading={loading} height={100} width={100} {...props} />
 

@@ -5,6 +5,7 @@ import Heading from '../components/atoms/Heading.astro';
 import Text from '../components/atoms/Text.astro';
 import Card from '../components/molecules/Card.astro';
 import SocialLinks from '../components/molecules/SocialLinks.astro';
+import RemoteImage, { profileImage } from '../components/atoms/RemoteImage.astro';
 ---
 
 <Layout title="Sobre mí | Carlos Mairena">
@@ -32,10 +33,12 @@ import SocialLinks from '../components/molecules/SocialLinks.astro';
 				<div class="flex-shrink-0 mb-8 lg:mb-0">
 					<div class="w-64 h-64 mx-auto lg:mx-0 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 p-1">
 						<div class="w-full h-full rounded-lg bg-gray-200 flex items-center justify-center">
-							<!-- Placeholder para foto profesional -->
-							<svg class="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-								<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-							</svg>
+							<!-- foto profesional -->
+							<RemoteImage src={profileImage} 
+							alt="Carlos Mairena López"
+							class="w-full h-full rounded-lg bg-gray-200 flex items-center justify-center"
+							loading="eager"
+						/>
 						</div>
 					</div>
 					<div class="text-center lg:text-left mt-6">
