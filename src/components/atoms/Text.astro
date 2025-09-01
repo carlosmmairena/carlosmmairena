@@ -1,0 +1,43 @@
+---
+interface Props {
+	size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
+	weight?: 'normal' | 'medium' | 'semibold' | 'bold';
+	color?: 'primary' | 'secondary' | 'muted';
+	class?: string;
+}
+
+const { 
+	size = 'base',
+	weight = 'normal',
+	color = 'primary',
+	class: className = '',
+	...props 
+} = Astro.props;
+
+const sizeClasses = {
+	xs: 'text-xs',
+	sm: 'text-sm',
+	base: 'text-base',
+	lg: 'text-lg',
+	xl: 'text-xl',
+};
+
+const weightClasses = {
+	normal: 'font-normal',
+	medium: 'font-medium',
+	semibold: 'font-semibold',
+	bold: 'font-bold',
+};
+
+const colorClasses = {
+	primary: 'text-gray-900',
+	secondary: 'text-gray-700',
+	muted: 'text-gray-600',
+};
+
+const classes = `${sizeClasses[size]} ${weightClasses[weight]} ${colorClasses[color]} ${className}`;
+---
+
+<p class={classes} {...props}>
+	<slot />
+</p>

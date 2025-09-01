@@ -1,0 +1,46 @@
+---
+interface Props {
+	level?: 1 | 2 | 3 | 4 | 5 | 6;
+	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+	class?: string;
+}
+
+const { 
+	level = 1, 
+	size,
+	class: className = '',
+	...props 
+} = Astro.props;
+
+// Mapeo automático de tamaño según el nivel si no se especifica
+const defaultSizes = {
+	1: '4xl',
+	2: '3xl',
+	3: '2xl',
+	4: 'xl',
+	5: 'lg',
+	6: 'md',
+};
+
+const finalSize: string = size || defaultSizes[level];
+
+const sizeClasses: Record<string, string> = {
+	'xs': 'text-xs',
+	'sm': 'text-sm',
+	'md': 'text-base',
+	'lg': 'text-lg',
+	'xl': 'text-xl',
+	'2xl': 'text-2xl',
+	'3xl': 'text-3xl',
+	'4xl': 'text-4xl md:text-6xl',
+};
+
+const baseClasses = 'font-bold text-gray-900';
+const classes = `${baseClasses} ${sizeClasses[finalSize]} ${className}`;
+
+const Tag = `h${level}` as any;
+---
+
+<Tag class={classes} {...props}>
+	<slot />
+</Tag>
