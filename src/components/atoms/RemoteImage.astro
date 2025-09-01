@@ -1,0 +1,21 @@
+---
+interface Props {
+    src: string;
+    alt: string;
+    class?: string;
+    loading?: 'lazy' | 'eager';
+}
+
+const { 
+    src, 
+    alt,
+    class: className = '',
+    loading = 'lazy',
+    ...props 
+} = Astro.props;
+
+export const profileImage = "https://media.licdn.com/dms/image/v2/D4E03AQHsq8HFuOqvTg/profile-displayphoto-shrink_800_800/B4EZahQ9f.GQAg-/0/1746462300723?e=1759363200&v=beta&t=zdA5HIMXx4l-G-dOtP6BdLNgbsywvQJnbwK33pzw3GY";
+---
+
+<img src={src} alt={alt} class={className} loading={loading} {...props} />
+

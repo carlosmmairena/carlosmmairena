@@ -9,6 +9,7 @@ import Heading from '../components/atoms/Heading.astro';
 import Text from '../components/atoms/Text.astro';
 import Icon from '../components/atoms/Icon.astro';
 import { getFeaturedProjects } from '../utils/projects';
+import RemoteImage, {profileImage} from '../components/atoms/RemoteImage.astro';
 
 // Obtener proyectos destacados desde Content Collections
 const featuredProjects = await getFeaturedProjects();
@@ -24,12 +25,12 @@ const featuredProjects = await getFeaturedProjects();
 				<!-- Foto profesional -->
 				<div class="mb-8">
 					<div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
-						<div class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center">
-							<!-- Placeholder para foto profesional -->
-							<svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-								<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-							</svg>
-						</div>
+							<!-- Foto profesional -->
+							<RemoteImage src={profileImage} 
+								alt="Carlos Mairena López"
+								class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center"
+								loading="lazy"
+							/>
 					</div>
 				</div>
 				
