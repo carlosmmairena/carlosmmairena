@@ -1,0 +1,12 @@
+{
+  "title": "Real-time Chat Application",
+  "description": "Aplicación de chat en tiempo real con salas privadas y públicas. Implementa encriptación end-to-end, compartir archivos, videollamadas WebRTC y notificaciones push.",
+  "technologies": ["React", "Node.js", "Socket.io", "WebRTC", "MongoDB", "Crypto-JS"],
+  "githubUrl": "https://github.com/carlosmmairena/realtime-chat",
+  "demoUrl": "https://chat.carlosmmairena.com",
+  "projectCategory": "Web Apps",
+  "category": "primary",
+  "image": "/projects/chat-preview.jpg",
+  "featured": false,
+  "order": 7
+}

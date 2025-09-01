@@ -1,0 +1,11 @@
+{
+  "title": "Network Scanner & Analyzer",
+  "description": "Scanner de red avanzado para descubrimiento de dispositivos, análisis de vulnerabilidades y mapeo de topología. Incluye detección de servicios, fingerprinting de OS y generación de reportes automatizados.",
+  "technologies": ["Python", "Nmap", "SQLite", "Tkinter", "Scapy", "NetworkX"],
+  "githubUrl": "https://github.com/carlosmmairena/network-scanner",
+  "projectCategory": "Security Tools",
+  "category": "danger",
+  "image": "/projects/network-scanner-preview.jpg",
+  "featured": true,
+  "order": 5
+}

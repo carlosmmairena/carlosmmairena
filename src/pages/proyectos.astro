@@ -4,85 +4,11 @@ import Header from '../components/organisms/Header.astro';
 import Heading from '../components/atoms/Heading.astro';
 import Text from '../components/atoms/Text.astro';
 import ProjectCard from '../components/molecules/ProjectCard.astro';
+import { getAllProjects, getProjectStats } from '../utils/projects';
 
-// Datos completos de proyectos (6-8 proyectos)
-const allProjects = [
-	{
-		title: "E-Commerce Platform",
-		description: "Plataforma de comercio electrónico completa con React, Node.js y PostgreSQL. Incluye sistema de pagos con Stripe, gestión de inventario en tiempo real, panel de administración avanzado y sistema de notificaciones.",
-		technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "Redis", "Docker"],
-		githubUrl: "https://github.com/carlosmmairena/ecommerce-platform",
-		demoUrl: "https://demo-ecommerce.carlosmmairena.com",
-		category: "primary",
-		projectCategory: "Web Apps",
-		image: "/projects/ecommerce-preview.jpg"
-	},
-	{
-		title: "DevOps Monitoring Stack",
-		description: "Stack completo de monitoreo y observabilidad con Prometheus, Grafana y AlertManager. Desplegado en Kubernetes usando Terraform con configuración de alta disponibilidad y backup automático.",
-		technologies: ["Kubernetes", "Prometheus", "Grafana", "Terraform", "AlertManager", "Helm"],
-		githubUrl: "https://github.com/carlosmmairena/k8s-monitoring",
-		category: "primary",
-		projectCategory: "Infrastructure Projects",
-		image: "/projects/monitoring-preview.jpg"
-	},
-	{
-		title: "Security Audit Tool",
-		description: "Herramienta automatizada para auditorías de seguridad en servidores Linux. Genera reportes detallados de vulnerabilidades, configuraciones inseguras y recomendaciones de hardening según estándares CIS.",
-		technologies: ["Python", "Bash", "Docker", "Linux", "CIS Benchmarks", "YAML"],
-		githubUrl: "https://github.com/carlosmmairena/security-audit",
-		category: "primary",
-		projectCategory: "Security Tools",
-		image: "/projects/security-audit-preview.jpg"
-	},
-	{
-		title: "Task Management App",
-		description: "Aplicación de gestión de tareas colaborativa con funcionalidades en tiempo real. Incluye kanban boards, asignación de tareas, notificaciones push y integración con calendarios externos.",
-		technologies: ["Vue.js", "Socket.io", "MongoDB", "Express", "JWT", "PWA"],
-		githubUrl: "https://github.com/carlosmmairena/task-manager",
-		demoUrl: "https://tasks.carlosmmairena.com",
-		category: "primary",
-		projectCategory: "Web Apps",
-		image: "/projects/task-manager-preview.jpg"
-	},
-	{
-		title: "Network Scanner & Analyzer",
-		description: "Scanner de red avanzado para descubrimiento de dispositivos, análisis de vulnerabilidades y mapeo de topología. Incluye detección de servicios, fingerprinting de OS y generación de reportes automatizados.",
-		technologies: ["Python", "Nmap", "SQLite", "Tkinter", "Scapy", "NetworkX"],
-		githubUrl: "https://github.com/carlosmmairena/network-scanner",
-		category: "primary",
-		projectCategory: "Security Tools",
-		image: "/projects/network-scanner-preview.jpg"
-	},
-	{
-		title: "Cloud Infrastructure as Code",
-		description: "Plantillas de Terraform para desplegar infraestructura completa en AWS. Incluye VPC, subnets, security groups, load balancers, auto-scaling y pipelines de CI/CD con GitHub Actions.",
-		technologies: ["Terraform", "AWS", "GitHub Actions", "Ansible", "CloudFormation", "Bash"],
-		githubUrl: "https://github.com/carlosmmairena/aws-terraform-stack",
-		category: "primary",
-		projectCategory: "Infrastructure Projects",
-		image: "/projects/terraform-preview.jpg"
-	},
-	{
-		title: "Real-time Chat Application",
-		description: "Aplicación de chat en tiempo real con salas privadas y públicas. Implementa encriptación end-to-end, compartir archivos, videollamadas WebRTC y notificaciones push.",
-		technologies: ["React", "Node.js", "Socket.io", "WebRTC", "MongoDB", "Crypto-JS"],
-		githubUrl: "https://github.com/carlosmmairena/realtime-chat",
-		demoUrl: "https://chat.carlosmmairena.com",
-		category: "primary",
-		projectCategory: "Web Apps",
-		image: "/projects/chat-preview.jpg"
-	},
-	{
-		title: "API Security Testing Suite",
-		description: "Suite de herramientas para testing de seguridad en APIs REST. Automatiza pruebas de inyección SQL, XSS, autenticación débil y configuraciones inseguras. Genera reportes detallados con recomendaciones.",
-		technologies: ["Python", "OWASP ZAP", "Burp Suite", "Selenium", "Docker", "JSON"],
-		githubUrl: "https://github.com/carlosmmairena/api-security-suite",
-		category: "primary",
-		projectCategory: "Security Tools",
-		image: "/projects/api-security-preview.jpg"
-	}
-];
+// Obtener todos los proyectos y estadísticas desde Content Collections
+const allProjects = await getAllProjects();
+const projectStats = await getProjectStats();
 
 // Categorías para filtros
 const projectCategories = ["Todos", "Web Apps", "Infrastructure Projects", "Security Tools"];
@@ -130,25 +56,19 @@ const projectCategories = ["Todos", "Web Apps", "Infrastructure Projects", "Secu
 			<!-- Stats Section -->
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
 				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
-					<div class="text-3xl font-bold text-blue-600 mb-2">{allProjects.length}</div>
+					<div class="text-3xl font-bold text-blue-600 mb-2">{projectStats.total}</div>
 					<Text color="secondary" size="sm">Proyectos Totales</Text>
 				</div>
 				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
-					<div class="text-3xl font-bold text-green-600 mb-2">
-						{allProjects.filter(p => p.projectCategory === "Web Apps").length}
-					</div>
+					<div class="text-3xl font-bold text-green-600 mb-2">{projectStats.webApps}</div>
 					<Text color="secondary" size="sm">Aplicaciones Web</Text>
 				</div>
 				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
-					<div class="text-3xl font-bold text-yellow-600 mb-2">
-						{allProjects.filter(p => p.projectCategory === "Infrastructure Projects").length}
-					</div>
+					<div class="text-3xl font-bold text-yellow-600 mb-2">{projectStats.infrastructure}</div>
 					<Text color="secondary" size="sm">Infraestructura</Text>
 				</div>
 				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
-					<div class="text-3xl font-bold text-red-600 mb-2">
-						{allProjects.filter(p => p.projectCategory === "Security Tools").length}
-					</div>
+					<div class="text-3xl font-bold text-red-600 mb-2">{projectStats.security}</div>
 					<Text color="secondary" size="sm">Seguridad</Text>
 				</div>
 			</div>

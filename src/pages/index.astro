@@ -8,52 +8,10 @@ import Button from '../components/atoms/Button.astro';
 import Heading from '../components/atoms/Heading.astro';
 import Text from '../components/atoms/Text.astro';
 import Icon from '../components/atoms/Icon.astro';
+import { getFeaturedProjects } from '../utils/projects';
 
-// Datos de proyectos destacados (últimos 5)
-const featuredProjects = [
-	{
-		title: "E-Commerce Platform",
-		description: "Plataforma de comercio electrónico completa con React, Node.js y PostgreSQL. Incluye sistema de pagos, inventario y panel de administración.",
-		technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-		githubUrl: "https://github.com/carlosmmairena/ecommerce-platform",
-		demoUrl: "https://demo-ecommerce.carlosmmairena.com",
-		projectCategory: "Web Apps",
-		category: 'primary'
-	},
-	{
-		title: "DevOps Monitoring Stack",
-		description: "Stack completo de monitoreo con Prometheus, Grafana y AlertManager desplegado en Kubernetes con Terraform.",
-		technologies: ["Kubernetes", "Prometheus", "Grafana", "Terraform"],
-		githubUrl: "https://github.com/carlosmmairena/k8s-monitoring",
-		projectCategory: "Infrastructure Projects",
-		category: 'primary'
-	},
-	{
-		title: "Security Audit Tool",
-		description: "Herramienta automatizada para auditorías de seguridad en servidores Linux. Genera reportes detallados de vulnerabilidades.",
-		technologies: ["Python", "Bash", "Docker", "Linux"],
-		githubUrl: "https://github.com/carlosmmairena/security-audit",
-		projectCategory: "Security Tools",
-		category: 'primary'
-	},
-	{
-		title: "Task Management App",
-		description: "Aplicación de gestión de tareas con colaboración en tiempo real, construida con Vue.js y Socket.io.",
-		technologies: ["Vue.js", "Socket.io", "MongoDB", "Express"],
-		githubUrl: "https://github.com/carlosmmairena/task-manager",
-		demoUrl: "https://tasks.carlosmmairena.com",
-		projectCategory: "Web Apps",
-		category: 'primary'
-	},
-	{
-		title: "Network Scanner",
-		description: "Scanner de red avanzado para descubrimiento de dispositivos y análisis de vulnerabilidades en redes corporativas.",
-		technologies: ["Python", "Nmap", "SQLite", "Tkinter"],
-		githubUrl: "https://github.com/carlosmmairena/network-scanner",
-		projectCategory: "Security Tools",
-		category: 'primary'
-	}
-];
+// Obtener proyectos destacados desde Content Collections
+const featuredProjects = await getFeaturedProjects();
 ---
 
 <Layout title="Inicio | Carlos Mairena">

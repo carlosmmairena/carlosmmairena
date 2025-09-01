@@ -1,0 +1,12 @@
+{
+  "title": "Task Management App",
+  "description": "Aplicación de gestión de tareas colaborativa con funcionalidades en tiempo real. Incluye kanban boards, asignación de tareas, notificaciones push y integración con calendarios externos.",
+  "technologies": ["Vue.js", "Socket.io", "MongoDB", "Express", "JWT", "PWA"],
+  "githubUrl": "https://github.com/carlosmmairena/task-manager",
+  "demoUrl": "https://tasks.carlosmmairena.com",
+  "projectCategory": "Web Apps",
+  "category": "primary",
+  "image": "/projects/task-manager-preview.jpg",
+  "featured": true,
+  "order": 4
+}
