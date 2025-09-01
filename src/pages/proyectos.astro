@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/organisms/Header.astro';
+import Heading from '../components/atoms/Heading.astro';
+import Text from '../components/atoms/Text.astro';
+import ProjectCard from '../components/molecules/ProjectCard.astro';
+
+// Datos completos de proyectos (6-8 proyectos)
+const allProjects = [
+	{
+		title: "E-Commerce Platform",
+		description: "Plataforma de comercio electrónico completa con React, Node.js y PostgreSQL. Incluye sistema de pagos con Stripe, gestión de inventario en tiempo real, panel de administración avanzado y sistema de notificaciones.",
+		technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "Redis", "Docker"],
+		githubUrl: "https://github.com/carlosmmairena/ecommerce-platform",
+		demoUrl: "https://demo-ecommerce.carlosmmairena.com",
+		category: "primary",
+		projectCategory: "Web Apps",
+		image: "/projects/ecommerce-preview.jpg"
+	},
+	{
+		title: "DevOps Monitoring Stack",
+		description: "Stack completo de monitoreo y observabilidad con Prometheus, Grafana y AlertManager. Desplegado en Kubernetes usando Terraform con configuración de alta disponibilidad y backup automático.",
+		technologies: ["Kubernetes", "Prometheus", "Grafana", "Terraform", "AlertManager", "Helm"],
+		githubUrl: "https://github.com/carlosmmairena/k8s-monitoring",
+		category: "primary",
+		projectCategory: "Infrastructure Projects",
+		image: "/projects/monitoring-preview.jpg"
+	},
+	{
+		title: "Security Audit Tool",
+		description: "Herramienta automatizada para auditorías de seguridad en servidores Linux. Genera reportes detallados de vulnerabilidades, configuraciones inseguras y recomendaciones de hardening según estándares CIS.",
+		technologies: ["Python", "Bash", "Docker", "Linux", "CIS Benchmarks", "YAML"],
+		githubUrl: "https://github.com/carlosmmairena/security-audit",
+		category: "primary",
+		projectCategory: "Security Tools",
+		image: "/projects/security-audit-preview.jpg"
+	},
+	{
+		title: "Task Management App",
+		description: "Aplicación de gestión de tareas colaborativa con funcionalidades en tiempo real. Incluye kanban boards, asignación de tareas, notificaciones push y integración con calendarios externos.",
+		technologies: ["Vue.js", "Socket.io", "MongoDB", "Express", "JWT", "PWA"],
+		githubUrl: "https://github.com/carlosmmairena/task-manager",
+		demoUrl: "https://tasks.carlosmmairena.com",
+		category: "primary",
+		projectCategory: "Web Apps",
+		image: "/projects/task-manager-preview.jpg"
+	},
+	{
+		title: "Network Scanner & Analyzer",
+		description: "Scanner de red avanzado para descubrimiento de dispositivos, análisis de vulnerabilidades y mapeo de topología. Incluye detección de servicios, fingerprinting de OS y generación de reportes automatizados.",
+		technologies: ["Python", "Nmap", "SQLite", "Tkinter", "Scapy", "NetworkX"],
+		githubUrl: "https://github.com/carlosmmairena/network-scanner",
+		category: "primary",
+		projectCategory: "Security Tools",
+		image: "/projects/network-scanner-preview.jpg"
+	},
+	{
+		title: "Cloud Infrastructure as Code",
+		description: "Plantillas de Terraform para desplegar infraestructura completa en AWS. Incluye VPC, subnets, security groups, load balancers, auto-scaling y pipelines de CI/CD con GitHub Actions.",
+		technologies: ["Terraform", "AWS", "GitHub Actions", "Ansible", "CloudFormation", "Bash"],
+		githubUrl: "https://github.com/carlosmmairena/aws-terraform-stack",
+		category: "primary",
+		projectCategory: "Infrastructure Projects",
+		image: "/projects/terraform-preview.jpg"
+	},
+	{
+		title: "Real-time Chat Application",
+		description: "Aplicación de chat en tiempo real con salas privadas y públicas. Implementa encriptación end-to-end, compartir archivos, videollamadas WebRTC y notificaciones push.",
+		technologies: ["React", "Node.js", "Socket.io", "WebRTC", "MongoDB", "Crypto-JS"],
+		githubUrl: "https://github.com/carlosmmairena/realtime-chat",
+		demoUrl: "https://chat.carlosmmairena.com",
+		category: "primary",
+		projectCategory: "Web Apps",
+		image: "/projects/chat-preview.jpg"
+	},
+	{
+		title: "API Security Testing Suite",
+		description: "Suite de herramientas para testing de seguridad en APIs REST. Automatiza pruebas de inyección SQL, XSS, autenticación débil y configuraciones inseguras. Genera reportes detallados con recomendaciones.",
+		technologies: ["Python", "OWASP ZAP", "Burp Suite", "Selenium", "Docker", "JSON"],
+		githubUrl: "https://github.com/carlosmmairena/api-security-suite",
+		category: "primary",
+		projectCategory: "Security Tools",
+		image: "/projects/api-security-preview.jpg"
+	}
+];
+
+// Categorías para filtros
+const projectCategories = ["Todos", "Web Apps", "Infrastructure Projects", "Security Tools"];
+---
+
+<Layout title="Proyectos | Carlos Mairena">
+	<Header currentPath="/proyectos" />
+	
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center">
+				<Heading level={1} class="mb-6">
+					Mis <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Proyectos</span>
+				</Heading>
+				<Text color="secondary" size="xl" class="max-w-3xl mx-auto">
+					Una selección de proyectos que muestran mi experiencia en desarrollo web, infraestructura y ciberseguridad
+				</Text>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Filter Section -->
+	<section class="py-8 bg-white border-b border-gray-200">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center">
+				<Text color="secondary" class="mb-4">Filtrar por categoría:</Text>
+				<div class="flex flex-wrap justify-center gap-3">
+					{projectCategories.map(category => (
+						<button 
+							class="filter-btn px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+							data-category={category}
+						>
+							{category}
+						</button>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Projects Grid -->
+	<main class="py-16 bg-gray-50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<!-- Stats Section -->
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
+					<div class="text-3xl font-bold text-blue-600 mb-2">{allProjects.length}</div>
+					<Text color="secondary" size="sm">Proyectos Totales</Text>
+				</div>
+				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
+					<div class="text-3xl font-bold text-green-600 mb-2">
+						{allProjects.filter(p => p.projectCategory === "Web Apps").length}
+					</div>
+					<Text color="secondary" size="sm">Aplicaciones Web</Text>
+				</div>
+				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
+					<div class="text-3xl font-bold text-yellow-600 mb-2">
+						{allProjects.filter(p => p.projectCategory === "Infrastructure Projects").length}
+					</div>
+					<Text color="secondary" size="sm">Infraestructura</Text>
+				</div>
+				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
+					<div class="text-3xl font-bold text-red-600 mb-2">
+						{allProjects.filter(p => p.projectCategory === "Security Tools").length}
+					</div>
+					<Text color="secondary" size="sm">Seguridad</Text>
+				</div>
+			</div>
+			
+			<!-- Projects Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+				{allProjects.map(project => (
+					<div class="project-item" data-category={project.projectCategory}>
+						<ProjectCard
+							title={project.title}
+							description={project.description}
+							image={project.image}
+							technologies={project.technologies}
+							githubUrl={project.githubUrl}
+							demoUrl={project.demoUrl}
+							category={project.category as 'primary' | 'warning' | 'danger'}
+							projectCategory={project.projectCategory}
+						/>
+					</div>
+				))}
+			</div>
+		</div>
+	</main>
+	
+	<!-- CTA Section -->
+	<section class="py-16 bg-blue-500">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<Heading level={2} size="2xl" class="mb-6 text-white">
+				¿Tienes un proyecto en mente?
+			</Heading>
+			<Text size="lg" class="text-white mb-8 max-w-2xl mx-auto">
+				Me encanta trabajar en proyectos desafiantes. Si tienes una idea o necesitas ayuda 
+				con desarrollo, infraestructura o seguridad, hablemos.
+			</Text>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="/contacto" class="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200">
+					Iniciar Conversación
+				</a>
+				<a href="/sobre-mi" class="inline-flex items-center justify-center px-6 py-3 border border-blue-200 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
+					Conocer Más Sobre Mí
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const filterButtons = document.querySelectorAll('.filter-btn');
+		const projectItems = document.querySelectorAll('.project-item');
+		
+		// Set initial active state
+		filterButtons[0].classList.add('bg-blue-600', 'text-white');
+		filterButtons[0].classList.remove('border-gray-300', 'text-gray-700');
+		
+		filterButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const category = button.getAttribute('data-category');
+				
+				// Update button states
+				filterButtons.forEach(btn => {
+					btn.classList.remove('bg-blue-600', 'text-white');
+					btn.classList.add('border-gray-300', 'text-gray-700');
+				});
+				button.classList.add('bg-blue-600', 'text-white');
+				button.classList.remove('border-gray-300', 'text-gray-700');
+				
+				// Filter projects
+				projectItems.forEach(item => {
+					const itemCategory = item.getAttribute('data-category');
+					if (category === 'Todos' || itemCategory === category) {
+						(item as HTMLElement).style.display = 'block';
+					} else {
+						(item as HTMLElement).style.display = 'none';
+					}
+				});
+			});
+		});
+	});
+</script>

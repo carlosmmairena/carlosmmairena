@@ -1,0 +1,39 @@
+---
+import Icon from '../atoms/Icon.astro';
+
+interface Props {
+	size?: 'sm' | 'md' | 'lg';
+	class?: string;
+}
+
+const { size = 'md', class: className = '' } = Astro.props;
+
+const socialLinks = [
+	{
+		name: 'GitHub',
+		href: 'https://github.com/carlosmmairena',
+		icon: 'github',
+	},
+	{
+		name: 'LinkedIn',
+		href: 'https://linkedin.com/in/carlosmmairena',
+		icon: 'linkedin',
+	},
+];
+
+const containerClass = `flex space-x-4 ${className}`;
+---
+
+<div class={containerClass}>
+	{socialLinks.map(social => (
+		<a
+			href={social.href}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="text-gray-500 hover:text-gray-900 transition-colors duration-200"
+			aria-label={social.name}
+		>
+			<Icon name={social.icon} size={size} />
+		</a>
+	))}
+</div>

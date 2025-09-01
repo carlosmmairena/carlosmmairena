@@ -1,45 +1,164 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/organisms/Header.astro';
 import Card from '../components/molecules/Card.astro';
+import ProjectCard from '../components/molecules/ProjectCard.astro';
+import SocialLinks from '../components/molecules/SocialLinks.astro';
 import Button from '../components/atoms/Button.astro';
 import Heading from '../components/atoms/Heading.astro';
 import Text from '../components/atoms/Text.astro';
+import Icon from '../components/atoms/Icon.astro';
+
+// Datos de proyectos destacados (últimos 5)
+const featuredProjects = [
+	{
+		title: "E-Commerce Platform",
+		description: "Plataforma de comercio electrónico completa con React, Node.js y PostgreSQL. Incluye sistema de pagos, inventario y panel de administración.",
+		technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
+		githubUrl: "https://github.com/carlosmmairena/ecommerce-platform",
+		demoUrl: "https://demo-ecommerce.carlosmmairena.com",
+		projectCategory: "Web Apps",
+		category: 'primary'
+	},
+	{
+		title: "DevOps Monitoring Stack",
+		description: "Stack completo de monitoreo con Prometheus, Grafana y AlertManager desplegado en Kubernetes con Terraform.",
+		technologies: ["Kubernetes", "Prometheus", "Grafana", "Terraform"],
+		githubUrl: "https://github.com/carlosmmairena/k8s-monitoring",
+		projectCategory: "Infrastructure Projects",
+		category: 'primary'
+	},
+	{
+		title: "Security Audit Tool",
+		description: "Herramienta automatizada para auditorías de seguridad en servidores Linux. Genera reportes detallados de vulnerabilidades.",
+		technologies: ["Python", "Bash", "Docker", "Linux"],
+		githubUrl: "https://github.com/carlosmmairena/security-audit",
+		projectCategory: "Security Tools",
+		category: 'primary'
+	},
+	{
+		title: "Task Management App",
+		description: "Aplicación de gestión de tareas con colaboración en tiempo real, construida con Vue.js y Socket.io.",
+		technologies: ["Vue.js", "Socket.io", "MongoDB", "Express"],
+		githubUrl: "https://github.com/carlosmmairena/task-manager",
+		demoUrl: "https://tasks.carlosmmairena.com",
+		projectCategory: "Web Apps",
+		category: 'primary'
+	},
+	{
+		title: "Network Scanner",
+		description: "Scanner de red avanzado para descubrimiento de dispositivos y análisis de vulnerabilidades en redes corporativas.",
+		technologies: ["Python", "Nmap", "SQLite", "Tkinter"],
+		githubUrl: "https://github.com/carlosmmairena/network-scanner",
+		projectCategory: "Security Tools",
+		category: 'primary'
+	}
+];
 ---
 
 <Layout title="Inicio | Carlos Mairena">
-	<main class="mx-auto px-4 py-8 max-w-4xl">
-		<div>
-			<Heading level={1} class="text-center leading-tight mb-4">
-				Bienvenido a <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">carlosmmairena.com</span>
-			</Heading>
-			
-			<Text color="secondary" size="lg" class="text-center mb-8 max-w-2xl mx-auto">
-				Encontrarás contenido Full Stack, infraestructura de servidores, redes, ciberseguridad y más...
-			</Text>
-			
-			<div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-				<Button variant="primary" size="lg">
-					Ver Proyectos
-				</Button>
-				<Button variant="outline" size="lg">
-					Descargar CV
-				</Button>
+	<Header currentPath="/" />
+	
+	<!-- Hero Section -->
+	<main class="bg-gradient-to-br from-blue-50 to-purple-50 py-20">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center">
+				<!-- Foto profesional -->
+				<div class="mb-8">
+					<div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
+						<div class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center">
+							<!-- Placeholder para foto profesional -->
+							<svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				
+				<Heading level={1} class="text-center leading-tight mb-4">
+					Bienvenido a <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">carlosmmairena.com</span>
+				</Heading>
+				
+				<Text color="secondary" size="xl" class="text-center mb-8 max-w-3xl mx-auto">
+					Desarrollador Full Stack especializado en infraestructura de servidores, redes y ciberseguridad. 
+					Creando soluciones robustas desde el código hasta la implementación.
+				</Text>
+				
+				<!-- CTAs -->
+				<div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+					<Button variant="primary" size="lg" href="/proyectos">
+						<Icon name="arrow-right" size="sm" class="mr-2" />
+						Ver Proyectos
+					</Button>
+					<Button variant="outline" size="lg" href="/cv.pdf">
+						<Icon name="download" size="sm" class="mr-2" />
+						Descargar CV
+					</Button>
+				</div>
+				
+				<!-- Redes sociales -->
+				<SocialLinks size="lg" class="justify-center" />
 			</div>
 		</div>
-		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-			<Card
-				title="💻 Desarrollo Web"
-				body="Aplicaciones web modernas con React, Vue, Astro y tecnologías de vanguardia."
-			/>
-			<Card
-				title="🔧 DevOps & Cloud"
-				body="Infraestructura escalable con Docker, Kubernetes y servicios en la nube."
-			/>
-			<Card
-				title="🔐 Ciberseguridad"
-				body="Hardening de servidores, auditorías de seguridad y monitoreo de sistemas."
-			/>
-		</div>
 	</main>
+	
+	<!-- Services Section -->
+	<section class="py-16 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<Heading level={2} size="3xl" class="mb-4">
+					¿Qué hago?
+				</Heading>
+				<Text color="secondary" size="lg" class="max-w-2xl mx-auto">
+					Mi experiencia abarca tanto el desarrollo de software como la gestión de infraestructura tecnológica
+				</Text>
+			</div>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<Card
+					title="💻 Desarrollo Web"
+					body="Aplicaciones web modernas con React, Vue, Astro y tecnologías de vanguardia. Frontend y backend escalables."
+				/>
+				<Card
+					title="🔧 DevOps & Cloud"
+					body="Infraestructura como código con Docker, Kubernetes, Terraform y servicios en la nube (AWS, Azure)."
+				/>
+				<Card
+					title="🔐 Ciberseguridad"
+					body="Hardening de servidores, auditorías de seguridad, pentesting y monitoreo de sistemas críticos."
+				/>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Featured Projects Section -->
+	<section class="py-16 bg-gray-50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<Heading level={2} size="3xl" class="mb-4">
+					Proyectos Destacados
+				</Heading>
+				<Text color="secondary" size="lg" class="max-w-2xl mx-auto mb-6">
+					Los últimos proyectos en los que he trabajado, desde aplicaciones web hasta herramientas de infraestructura
+				</Text>
+				<Button variant="outline" href="/proyectos">
+					Ver todos los proyectos
+				</Button>
+			</div>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{featuredProjects.map(project => (
+					<ProjectCard
+						title={project.title}
+						description={project.description}
+						technologies={project.technologies}
+						githubUrl={project.githubUrl}
+						demoUrl={project.demoUrl}
+						projectCategory={project.projectCategory}
+						category={project.category as 'primary' | 'warning' | 'danger'}
+					/>
+				))}
+			</div>
+		</div>
+	</section>
 </Layout>

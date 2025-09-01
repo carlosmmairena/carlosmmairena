@@ -1,0 +1,83 @@
+---
+import Badge from '../atoms/Badge.astro';
+import Button from '../atoms/Button.astro';
+import Icon from '../atoms/Icon.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	technologies: string[];
+	githubUrl?: string;
+	demoUrl?: string;
+	projectCategory: string;
+	category: 'primary' | 'warning' | 'danger';
+}
+
+const { 
+	title, 
+	description, 
+	image, 
+	technologies, 
+	githubUrl, 
+	demoUrl,
+	projectCategory,
+	category 
+} = Astro.props;
+
+---
+
+<div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+	<!-- Project Image -->
+	<div class="h-48 bg-gray-100 flex items-center justify-center">
+		{image ? (
+			<img src={image} alt={title} class="w-full h-full object-cover" />
+		) : (
+			<div class="text-gray-400 text-center">
+				<svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+					<path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+				</svg>
+				<p class="text-sm">Screenshot disponible pronto</p>
+			</div>
+		)}
+	</div>
+	
+	<!-- Project Content -->
+	<div class="p-6">
+		<!-- Category Badge -->
+		<Badge variant={category} class="mb-3">
+			{projectCategory}
+		</Badge>
+		
+		<!-- Title -->
+		<h3 class="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+		
+		<!-- Description -->
+		<p class="text-gray-600 mb-4 line-clamp-3">{description}</p>
+		
+		<!-- Technologies -->
+		<div class="flex flex-wrap gap-2 mb-4">
+			{technologies.map(tech => (
+				<Badge variant="secondary" size="sm">
+					{tech}
+				</Badge>
+			))}
+		</div>
+		
+		<!-- Action Buttons -->
+		<div class="flex space-x-3">
+			{githubUrl && (
+				<Button variant="outline" size="sm" href={githubUrl} class="flex-1">
+					<Icon name="github" size="sm" class="mr-2" />
+					Código
+				</Button>
+			)}
+			{demoUrl && (
+				<Button variant="primary" size="sm" href={demoUrl} class="flex-1">
+					<Icon name="external-link" size="sm" class="mr-2" />
+					Demo
+				</Button>
+			)}
+		</div>
+	</div>
+</div>

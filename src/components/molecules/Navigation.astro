@@ -1,0 +1,66 @@
+---
+import Link from '../atoms/Link.astro';
+
+interface Props {
+	currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const navItems = [
+	{ href: '/', label: 'Inicio' },
+	{ href: '/sobre-mi', label: 'Sobre mí' },
+	{ href: '/proyectos', label: 'Proyectos' },
+	{ href: '/skills', label: 'Skills' },
+	{ href: '/blog', label: 'Blog' },
+	{ href: '/contacto', label: 'Contacto' },
+];
+---
+
+<nav class="hidden md:flex space-x-8">
+	{navItems.map(item => (
+		<Link 
+			href={item.href} 
+			variant="nav" 
+			isActive={currentPath === item.href}
+		>
+			{item.label}
+		</Link>
+	))}
+</nav>
+
+<!-- Mobile menu button -->
+<div class="md:hidden">
+	<button type="button" class="text-gray-500 hover:text-gray-900 p-2" id="mobile-menu-button">
+		<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+		</svg>
+	</button>
+</div>
+
+<!-- Mobile menu -->
+<div class="md:hidden absolute top-16 left-0 right-0 bg-white border-t border-gray-200 shadow-lg hidden" id="mobile-menu">
+	<div class="px-4 py-2 space-y-2">
+		{navItems.map(item => (
+			<Link 
+				href={item.href} 
+				variant="nav" 
+				isActive={currentPath === item.href}
+				class="block py-2"
+			>
+				{item.label}
+			</Link>
+		))}
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const button = document.getElementById('mobile-menu-button');
+		const menu = document.getElementById('mobile-menu');
+		
+		button?.addEventListener('click', () => {
+			menu?.classList.toggle('hidden');
+		});
+	});
+</script>

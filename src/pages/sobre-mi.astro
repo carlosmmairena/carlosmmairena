@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/organisms/Header.astro';
+import Heading from '../components/atoms/Heading.astro';
+import Text from '../components/atoms/Text.astro';
+import Card from '../components/molecules/Card.astro';
+import SocialLinks from '../components/molecules/SocialLinks.astro';
+---
+
+<Layout title="Sobre mí | Carlos Mairena">
+	<Header currentPath="/sobre-mi" />
+	
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center">
+				<Heading level={1} class="mb-6">
+					Sobre <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Carlos Mairena</span>
+				</Heading>
+				<Text color="secondary" size="xl" class="max-w-3xl mx-auto">
+					Desarrollador apasionado por crear soluciones tecnológicas que impacten positivamente en las organizaciones
+				</Text>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Main Content -->
+	<main class="py-16 bg-white">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<!-- Profile Image and Basic Info -->
+			<div class="lg:flex lg:items-start lg:space-x-12 mb-16">
+				<div class="flex-shrink-0 mb-8 lg:mb-0">
+					<div class="w-64 h-64 mx-auto lg:mx-0 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 p-1">
+						<div class="w-full h-full rounded-lg bg-gray-200 flex items-center justify-center">
+							<!-- Placeholder para foto profesional -->
+							<svg class="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+							</svg>
+						</div>
+					</div>
+					<div class="text-center lg:text-left mt-6">
+						<SocialLinks size="md" class="justify-center lg:justify-start" />
+					</div>
+				</div>
+				
+				<div class="flex-1">
+					<Heading level={2} size="2xl" class="mb-6">
+						Mi Historia Profesional
+					</Heading>
+					<div class="space-y-4">
+						<Text color="primary" size="lg">
+							¡Hola! Soy Carlos Mairena, un desarrollador Full Stack con más de 5 años de experiencia 
+							creando soluciones tecnológicas robustas y escalables.
+						</Text>
+						<Text color="secondary">
+							Mi carrera comenzó en el mundo de la administración de sistemas y redes, donde desarrollé 
+							una sólida comprensión de la infraestructura tecnológica. Esta base me ha permitido crear 
+							aplicaciones web que no solo funcionan bien en el frontend, sino que también están 
+							optimizadas para la infraestructura que las soporta.
+						</Text>
+						<Text color="secondary">
+							A lo largo de mi trayectoria, he trabajado tanto en startups ágiles como en empresas 
+							consolidadas, lo que me ha dado una perspectiva única sobre cómo adaptar las soluciones 
+							tecnológicas a diferentes contextos y necesidades empresariales.
+						</Text>
+						<Text color="secondary">
+							Actualmente, me especializo en crear arquitecturas de software que sean tanto elegantes 
+							en su código como robustas en su implementación, siempre con un enfoque en la seguridad 
+							y la escalabilidad.
+						</Text>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Philosophy Section -->
+			<section class="mb-16">
+				<Heading level={2} size="2xl" class="text-center mb-12">
+					Mi Filosofía de Desarrollo
+				</Heading>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<Card
+						title="🎯 Enfoque en Soluciones"
+						body="Creo que la tecnología debe resolver problemas reales. Cada línea de código debe tener un propósito claro y aportar valor al usuario final y al negocio."
+					/>
+					<Card
+						title="🔒 Seguridad desde el Diseño"
+						body="La ciberseguridad no es una característica adicional, es fundamental. Diseño pensando en la seguridad desde el primer momento, no como una reflexión tardía."
+					/>
+					<Card
+						title="📈 Escalabilidad Inteligente"
+						body="Construyo sistemas que crecen con las necesidades del negocio. La arquitectura debe ser flexible sin ser excesivamente compleja."
+					/>
+					<Card
+						title="🤝 Colaboración Efectiva"
+						body="El mejor código es el que el equipo puede entender y mantener. Priorizo la claridad, la documentación y la transferencia de conocimiento."
+					/>
+				</div>
+			</section>
+			
+			<!-- Personal Interests -->
+			<section class="bg-gray-50 rounded-xl p-8">
+				<Heading level={2} size="2xl" class="text-center mb-8">
+					Más Allá del Código
+				</Heading>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					<div class="text-center">
+						<div class="text-4xl mb-4">🔬</div>
+						<Heading level={3} size="lg" class="mb-2">
+							Investigación Tecnológica
+						</Heading>
+						<Text color="secondary" size="sm">
+							Siempre explorando nuevas tecnologías emergentes, especialmente en el ámbito de la 
+							inteligencia artificial y la automatización de infraestructura.
+						</Text>
+					</div>
+					<div class="text-center">
+						<div class="text-4xl mb-4">🎓</div>
+						<Heading level={3} size="lg" class="mb-2">
+							Educación Continua
+						</Heading>
+						<Text color="secondary" size="sm">
+							Comprometido con el aprendizaje permanente a través de certificaciones, cursos 
+							especializados y participación en comunidades tecnológicas.
+						</Text>
+					</div>
+					<div class="text-center">
+						<div class="text-4xl mb-4">🌱</div>
+						<Heading level={3} size="lg" class="mb-2">
+							Proyectos Open Source
+						</Heading>
+						<Text color="secondary" size="sm">
+							Contribuyo activamente a proyectos de código abierto y mantengo herramientas que 
+							ayudan a otros desarrolladores en su trabajo diario.
+						</Text>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+	
+	<!-- Location & Contact -->
+	<section class="py-16 bg-blue-50">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<Heading level={2} size="2xl" class="mb-6">
+				Ubicado en Costa Rica 🇨🇷
+			</Heading>
+			<Text color="secondary" size="lg" class="mb-8 max-w-2xl mx-auto">
+				Desde la hermosa provincia de Guanacaste, trabajo con clientes y equipos de todo el mundo. 
+				La colaboración remota y la comunicación efectiva son parte integral de mi forma de trabajar.
+			</Text>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="/contacto" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
+					Trabajemos Juntos
+				</a>
+				<a href="/cv.pdf" class="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors duration-200">
+					Descargar CV
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>
