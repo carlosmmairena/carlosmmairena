@@ -1,0 +1,135 @@
+---
+import Heading from '../atoms/Heading.astro';
+import Text from '../atoms/Text.astro';
+import Button from '../atoms/Button.astro';
+import Icon from '../atoms/Icon.astro';
+import SocialLinks from '../molecules/SocialLinks.astro';
+import TechIcons from '../molecules/TechIcons.astro';
+---
+
+<footer class="bg-gray-900 text-white">
+	<!-- Main Footer Content -->
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+			<!-- Brand & Description -->
+			<div class="lg:col-span-2">
+				<Heading level={3} size="2xl" class="text-white mb-4">
+					Carlos Mairena
+				</Heading>
+				<Text color="secondary" class="text-gray-300 mb-6 max-w-md">
+					Desarrollador Full Stack especializado en infraestructura, redes y ciberseguridad. 
+					Creando soluciones robustas desde Costa Rica para el mundo.
+				</Text>
+				
+				<!-- Technologies -->
+				<div class="mb-6">
+					<Text weight="semibold" class="text-white mb-3">
+						Tecnologías que domino:
+					</Text>
+					<TechIcons size="md" />
+				</div>
+				
+				<!-- Location -->
+				<div class="flex items-center space-x-2 text-gray-300">
+					<Icon name="location" size="sm" />
+					<Text size="sm" class="text-gray-300">
+						Guanacaste, Costa Rica 🇨🇷
+					</Text>
+				</div>
+			</div>
+			
+			<!-- Quick Links -->
+			<div>
+				<Heading level={4} size="lg" class="text-white mb-4">
+					Enlaces Rápidos
+				</Heading>
+				<ul class="space-y-3">
+					<li>
+						<a href="/" class="text-gray-300 hover:text-white transition-colors duration-200">
+							Inicio
+						</a>
+					</li>
+					<li>
+						<a href="/sobre-mi" class="text-gray-300 hover:text-white transition-colors duration-200">
+							Sobre mí
+						</a>
+					</li>
+					<li>
+						<a href="/proyectos" class="text-gray-300 hover:text-white transition-colors duration-200">
+							Proyectos
+						</a>
+					</li>
+					<li>
+						<a href="/contacto" class="text-gray-300 hover:text-white transition-colors duration-200">
+							Contacto
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<!-- Contact & Social -->
+			<div>
+				<Heading level={4} size="lg" class="text-white mb-4">
+					Conectemos
+				</Heading>
+				
+				<!-- Contact Info -->
+				<div class="space-y-3 mb-6">
+					<div class="flex items-center space-x-2">
+						<Icon name="email" size="sm" class="text-gray-400" />
+						<a href="mailto:carlos@carlosmmairena.com" class="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+							carlos@carlosmmairena.com
+						</a>
+					</div>
+					<div class="flex items-center space-x-2">
+						<Icon name="phone" size="sm" class="text-gray-400" />
+						<a href="tel:+50688887777" class="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+							+506 8888-7777
+						</a>
+					</div>
+				</div>
+				
+				<!-- Social Links -->
+				<div class="mb-6">
+					<Text weight="semibold" class="text-white mb-3">
+						Redes Sociales:
+					</Text>
+					<SocialLinks size="md" class="space-x-3" />
+				</div>
+				
+				<!-- CTA Button -->
+				<Button variant="primary" size="md" href="/proyectos" class="w-full">
+					<Icon name="arrow-right" size="sm" class="mr-2" />
+					Ver Proyectos
+				</Button>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Bottom Bar -->
+	<div class="border-t border-gray-800">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+			<div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+				<!-- Copyright -->
+				<div class="flex items-center space-x-4">
+					<Text size="sm" class="text-gray-400">
+						© 2024 Carlos Mairena. Todos los derechos reservados.
+					</Text>
+				</div>
+				
+				<!-- Additional Links -->
+				<div class="flex items-center space-x-6">
+					<a href="/cv.pdf" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+						Descargar CV
+					</a>
+					<a href="https://github.com/carlosmmairena" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+						GitHub
+					</a>
+					<a href="https://linkedin.com/in/carlosmmairena" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+						LinkedIn
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

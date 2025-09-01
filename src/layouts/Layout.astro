@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/organisms/Footer.astro';
+
 interface Props {
 	title: string;
 }
@@ -20,4 +22,5 @@ const { title } = Astro.props;
 	<body class="font-sans bg-white text-gray-900">
 		<slot />
 	</body>
+	<Footer />
 </html>

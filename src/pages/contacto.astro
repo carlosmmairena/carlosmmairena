@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/organisms/Header.astro';
+import Heading from '../components/atoms/Heading.astro';
+import Text from '../components/atoms/Text.astro';
+import Card from '../components/molecules/Card.astro';
+import SocialLinks from '../components/molecules/SocialLinks.astro';
+import Button from '../components/atoms/Button.astro';
+import Icon from '../components/atoms/Icon.astro';
+---
+
+<Layout title="Contacto | Carlos Mairena">
+	<Header currentPath="/contacto" />
+	
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center">
+				<Heading level={1} class="mb-6">
+					Hablemos de tu <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Próximo Proyecto</span>
+				</Heading>
+				<Text color="secondary" size="xl" class="max-w-3xl mx-auto">
+					¿Tienes una idea? ¿Necesitas ayuda con desarrollo, infraestructura o seguridad? 
+					Estoy aquí para convertir tus ideas en realidad.
+				</Text>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Contact Information -->
+	<main class="py-16 bg-white">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<!-- Contact Methods -->
+			<div class="grid grid-cols-1 gap-12 mb-16">
+				<!-- Direct Contact -->
+				<div>
+					<Heading level={2} size="2xl" class="mb-8">
+						Información de Contacto
+					</Heading>
+					
+					<div class="space-y-6">
+						<!-- Email -->
+						<div class="flex items-start space-x-4">
+							<div class="flex-shrink-0">
+								<div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+									<Icon name="linkedin" size="md" class="text-blue-600" />
+								</div>
+							</div>
+							<div>
+								<Heading level={3} size="lg" class="mb-2">
+									LinkedIn
+								</Heading>
+								<Text color="secondary" class="mb-2">
+									La forma más rápida de contactarme
+								</Text>
+								<a href="https://linkedin.com/in/carlosmmairena" class="text-blue-600 hover:text-blue-800 font-medium">
+									linkedin.com/in/carlosmmairena
+								</a>
+							</div>
+						</div>
+						
+						<!-- Location -->
+						<div class="flex items-start space-x-4">
+							<div class="flex-shrink-0">
+								<div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+									<Icon name="location" size="md" class="text-purple-600" />
+								</div>
+							</div>
+							<div>
+								<Heading level={3} size="lg" class="mb-2">
+									Ubicación
+								</Heading>
+								<Text color="secondary" class="mb-2">
+									Trabajo remotamente desde Costa Rica 🇨🇷
+								</Text>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Social Links -->
+					<div class="mt-8 pt-8 border-t border-gray-200">
+						<Heading level={3} size="lg" class="mb-4">
+							Redes Sociales
+						</Heading>
+						<SocialLinks size="lg" />
+						<div class="mt-4 space-y-2">
+							<Text color="secondary" size="sm">
+								<strong>GitHub:</strong> Revisa mis proyectos y contribuciones
+							</Text>
+							<Text color="secondary" size="sm">
+								<strong>LinkedIn:</strong> Conecta conmigo
+							</Text>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Project Inquiry -->
+			<section class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+				<div class="max-w-3xl mx-auto text-center">
+					<Heading level={2} size="2xl" class="text-white mb-6">
+						¿Listo para Empezar?
+					</Heading>
+					<Text size="lg" class="text-white mb-8">
+						Cuéntame sobre tu proyecto y veamos cómo puedo ayudarte a alcanzar tus objetivos tecnológicos. 
+						Cada proyecto comienza con una conversación.
+					</Text>
+					
+					<div class="flex flex-col sm:flex-row gap-4 justify-center">
+						<Button 
+							variant="outline" 
+							size="lg" 
+							href="https://linkedin.com/in/cristiancrm?msg=Hola Carlos, tengo un proyecto en mente y me gustaría discutirlo contigo."
+							class="bg-white text-blue-600 border-white hover:bg-gray-100"
+						>
+							<Icon name="linkedin" size="sm" class="mr-2" />
+							Envíame un mensaje en LinkedIn
+						</Button>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+	
+	<!-- FAQ Section -->
+	<section class="py-16 bg-gray-50">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<Heading level={2} size="2xl" class="text-center mb-12">
+				Preguntas Frecuentes
+			</Heading>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				<Card
+					title="¿Trabajas con startups?"
+					body="¡Absolutamente! Me encanta trabajar con startups y ayudarlas a construir su MVP, escalar su infraestructura y establecer buenas prácticas desde el inicio."
+				/>
+				<Card
+					title="¿Manejas proyectos internacionales?"
+					body="Sí, trabajo con clientes de todo el mundo. Estoy acostumbrado a trabajar en diferentes zonas horarias y tengo experiencia en colaboración remota."
+				/>
+				<Card
+					title="¿Cuál es tu stack preferido?"
+					body="Soy agnóstico en tecnologías, pero tengo preferencia por React/Vue en frontend, Node.js/Python en backend, y AWS/Docker para infraestructura."
+				/>
+				<Card
+					title="¿Ofreces soporte post-lanzamiento?"
+					body="Sí, ofrezco diferentes planes de soporte y mantenimiento según las necesidades del proyecto. Desde soporte básico hasta mantenimiento completo."
+				/>
+			</div>
+		</div>
+	</section>
+</Layout>
