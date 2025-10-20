@@ -1,8 +1,8 @@
 ---
-import Header from '../components/organisms/Header.astro';
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const posts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+const posts = await getCollection("posts");
 
 ---
 
@@ -11,7 +11,7 @@ const posts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 
     <h2>mis publicaciones:</h2>
     <ul>
-        {posts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+        {posts.map((post: any) => <li><a href={`/posts/${post.id}/`}>{post.data.title}</a></li>)}
     </ul>
 
 </Layout>

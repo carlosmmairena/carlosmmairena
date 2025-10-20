@@ -23,7 +23,7 @@ const { frontmatter, url } = Astro.props;
 		<article class="text-justify">
 			<h1 class="text-4xl text-center m-5">{frontmatter.title}</h1>
 			  
-			<p>Fecha de publicación: {frontmatter.pubDate.toString().slice(0,10)}</p>
+			<p>Fecha de publicación: {frontmatter.pubDate.toLocaleDateString()}</p>
 			  <p><em>{frontmatter.description}</em></p>
 			  <p>Escrito por: {frontmatter.author}</p>
 			  
