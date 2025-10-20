@@ -1,0 +1,98 @@
+---
+import Badge from '../atoms/Badge.astro';
+import Button from '../atoms/Button.astro';
+import Icon from '../atoms/Icon.astro';
+import Text from '../atoms/Text.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	pubDate: Date;
+	author: string;
+	imageUrl?: string;
+	imageAlt?: string;
+	tags?: string[];
+	slug: string;
+}
+
+const { 
+	title, 
+	description, 
+	pubDate,
+	author,
+	imageUrl,
+	imageAlt,
+	tags = [],
+	slug
+} = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('es-ES', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric'
+});
+---
+
+<article class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden h-full flex flex-col">
+	<!-- Post Image -->
+	{imageUrl && (
+		<div class="h-48 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden">
+			<img 
+				src={imageUrl} 
+				alt={imageAlt || title} 
+				class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+			/>
+		</div>
+	)}
+	
+	<!-- Post Content -->
+	<div class="p-6 flex-1 flex flex-col">
+		<!-- Metadata -->
+		<div class="flex items-center gap-2 text-sm text-gray-600 mb-3">
+			<Icon name="calendar" size="sm" />
+			<time datetime={pubDate.toISOString()}>{formattedDate}</time>
+			<span class="text-gray-400">•</span>
+			<Icon name="user" size="sm" />
+			<span>{author}</span>
+		</div>
+		
+		<!-- Title -->
+		<h3 class="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
+			<a href={`/posts/${slug}/`}>
+				{title}
+			</a>
+		</h3>
+		
+		<!-- Description -->
+		<Text color="secondary" class="mb-4 line-clamp-3 flex-1">
+			{description}
+		</Text>
+		
+		<!-- Tags -->
+		{tags.length > 0 && (
+			<div class="flex flex-wrap gap-2 mb-4">
+				{tags.slice(0, 3).map(tag => (
+					<Badge variant="primary" size="sm">
+						<a href={`/tags/${tag}/`} class="hover:underline">
+							#{tag}
+						</a>
+					</Badge>
+				))}
+				{tags.length > 3 && (
+					<Badge variant="secondary" size="sm">
+						+{tags.length - 3}
+					</Badge>
+				)}
+			</div>
+		)}
+		
+		<!-- Action Button -->
+		<div class="mt-auto">
+			<Button variant="outline" size="sm" href={`/posts/${slug}/`} class="w-full">
+				Leer más
+				<Icon name="arrow-right" size="sm" class="ml-2" />
+			</Button>
+		</div>
+	</div>
+</article>
+

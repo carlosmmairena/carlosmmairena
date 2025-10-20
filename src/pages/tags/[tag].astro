@@ -1,32 +1,116 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Heading from '../../components/atoms/Heading.astro';
+import Text from '../../components/atoms/Text.astro';
+import BlogPostCard from '../../components/molecules/BlogPostCard.astro';
+import Badge from '../../components/atoms/Badge.astro';
+import Button from '../../components/atoms/Button.astro';
+import Icon from '../../components/atoms/Icon.astro';
 
 export async function getStaticPaths() {
-
-    const posts =  await getCollection("posts");
-
-    return [
-        { params: { tag: "astro" }, props: {posts: posts} },
-        { params: { tag: "successes" }, props: {posts: posts} },
-        { params: { tag: "community" }, props: {posts: posts} },
-        { params: { tag: "blogging" }, props: {posts: posts} },
-        { params: { tag: "setbacks" }, props: {posts: posts} },
-        { params: { tag: "learning in public" }, props: {posts: posts} },
-    ];
+    const posts = await getCollection("posts");
+    
+    // Obtener todas las etiquetas únicas de todos los posts
+    const allTags = [...new Set(posts.flatMap((post: any) => post.data.tags || []))];
+    
+    // Crear una ruta para cada etiqueta
+    return allTags.map(tag => ({
+        params: { tag },
+        props: { posts }
+    }));
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 
-const filteredPosts = posts.filter((post: any) => post.data.tags?.includes(tag));
+const filteredPosts = posts
+    .filter((post: any) => post.data.tags?.includes(tag))
+    .sort((a: any, b: any) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// Obtener todas las etiquetas para mostrar sugerencias
+const allTags = [...new Set(posts.flatMap((post: any) => post.data.tags || []))];
+const otherTags = allTags.filter(t => t !== tag);
 ---
-<Layout title={tag} currentPath={tag}>
-    <p>Publicaciones etiquetados con {tag}</p>
 
-    <ul>
-        {filteredPosts.map((post: any) => <li><a href={post.url}>{post.data.title}</a></li>)}
-    </ul>
+<Layout title={`#${tag} | Blog`} currentPath={`/tags/${tag}`}>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <!-- Breadcrumb -->
+                <div class="mb-4">
+                    <Button variant="outline" size="sm" href="/blog">
+                        <Icon name="arrow-left" size="sm" class="mr-2" />
+                        Volver al blog
+                    </Button>
+                </div>
 
+                <Heading level={1} class="leading-tight mb-4">
+                    <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                        #{tag}
+                    </span>
+                </Heading>
+                
+                <Text color="secondary" size="xl" class="text-center mb-8 max-w-3xl mx-auto">
+                    {filteredPosts.length} {filteredPosts.length === 1 ? 'artículo encontrado' : 'artículos encontrados'} con esta etiqueta
+                </Text>
+
+                <!-- Otras etiquetas -->
+                {otherTags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <Text color="muted" size="sm" class="w-full mb-2">
+                            Explorar otras etiquetas:
+                        </Text>
+                        {otherTags.slice(0, 5).map(t => (
+                            <Badge variant="secondary">
+                                <a href={`/tags/${t}/`} class="hover:underline">
+                                    #{t}
+                                </a>
+                            </Badge>
+                        ))}
+                        {otherTags.length > 5 && (
+                            <Badge variant="secondary">
+                                <a href="/tags/" class="hover:underline">
+                                    +{otherTags.length - 5} más
+                                </a>
+                            </Badge>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
+    </section>
+
+    <!-- Posts Grid -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {filteredPosts.length === 0 ? (
+                <div class="text-center py-12">
+                    <Text color="muted" size="lg" class="mb-6">
+                        No hay publicaciones con esta etiqueta aún.
+                    </Text>
+                    <Button variant="primary" href="/blog">
+                        Ver todos los artículos
+                    </Button>
+                </div>
+            ) : (
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {filteredPosts.map((post: any) => (
+                        <BlogPostCard
+                            title={post.data.title}
+                            description={post.data.description}
+                            pubDate={post.data.pubDate}
+                            author={post.data.author}
+                            imageUrl={post.data.image?.url}
+                            imageAlt={post.data.image?.alt}
+                            tags={post.data.tags}
+                            slug={post.id}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    </section>
 </Layout>
 

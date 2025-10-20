@@ -1,17 +1,94 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import Heading from '../components/atoms/Heading.astro';
+import Text from '../components/atoms/Text.astro';
+import BlogPostCard from '../components/molecules/BlogPostCard.astro';
+import Badge from '../components/atoms/Badge.astro';
 
 const posts = await getCollection("posts");
 
+// Ordenar posts por fecha (más reciente primero)
+const sortedPosts = posts.sort((a: any, b: any) => 
+	b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+// Obtener todas las etiquetas únicas
+const allTags = [...new Set(posts.flatMap((post: any) => post.data.tags || []))];
 ---
 
 <Layout title="Blog | Carlos Mairena" currentPath="/blog">
-    <h1>Este es mi blog</h1>
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center">
+				<Heading level={1} class="leading-tight mb-4">
+					📝 <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Blog</span>
+				</Heading>
+				
+				<Text color="secondary" size="xl" class="text-center mb-8 max-w-3xl mx-auto">
+					Artículos sobre desarrollo web, infraestructura, ciberseguridad y tecnología. 
+					Comparto mi experiencia y aprendizajes en el mundo tech.
+				</Text>
 
-    <h2>mis publicaciones:</h2>
-    <ul>
-        {posts.map((post: any) => <li><a href={`/posts/${post.id}/`}>{post.data.title}</a></li>)}
-    </ul>
+				<!-- Etiquetas populares -->
+				{allTags.length > 0 && (
+					<div class="flex flex-wrap gap-2 justify-center">
+						<Text color="muted" size="sm" class="w-full mb-2">
+							Filtrar por etiqueta:
+						</Text>
+						{allTags.map(tag => (
+							<Badge variant="primary">
+								<a href={`/tags/${tag}/`} class="hover:underline">
+									#{tag}
+								</a>
+							</Badge>
+						))}
+						<Badge variant="secondary">
+							<a href="/tags/" class="hover:underline">
+								Ver todas →
+							</a>
+						</Badge>
+					</div>
+				)}
+			</div>
+		</div>
+	</section>
 
+	<!-- Posts Grid -->
+	<section class="py-16 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="mb-8">
+				<Heading level={2} size="2xl" class="mb-2">
+					Últimas publicaciones
+				</Heading>
+				<Text color="secondary">
+					{sortedPosts.length} {sortedPosts.length === 1 ? 'artículo' : 'artículos'} publicados
+				</Text>
+			</div>
+			
+			{sortedPosts.length === 0 ? (
+				<div class="text-center py-12">
+					<Text color="muted" size="lg">
+						No hay publicaciones aún. ¡Vuelve pronto para ver nuevo contenido!
+					</Text>
+				</div>
+			) : (
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{sortedPosts.map((post: any) => (
+						<BlogPostCard
+							title={post.data.title}
+							description={post.data.description}
+							pubDate={post.data.pubDate}
+							author={post.data.author}
+							imageUrl={post.data.image?.url}
+							imageAlt={post.data.image?.alt}
+							tags={post.data.tags}
+							slug={post.id}
+						/>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
 </Layout>

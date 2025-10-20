@@ -1,21 +1,118 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Heading from '../../components/atoms/Heading.astro';
+import Text from '../../components/atoms/Text.astro';
+import Badge from '../../components/atoms/Badge.astro';
+import Button from '../../components/atoms/Button.astro';
+import Icon from '../../components/atoms/Icon.astro';
 
-const posts =  await getCollection("posts");
+const posts = await getCollection("posts");
 
-const tags = [...new Set(posts.map((post: any) => post.data.tags).flat())];
+const tags = [...new Set(posts.map((post: any) => post.data.tags).flat())].filter(Boolean);
 
+// Contar cuántos posts tiene cada tag
+const tagCounts = tags.reduce((acc: Record<string, number>, tag: string) => {
+    acc[tag] = posts.filter((post: any) => post.data.tags?.includes(tag)).length;
+    return acc;
+}, {});
 
+// Ordenar tags por cantidad de posts (descendente) y luego alfabéticamente
+const sortedTags = [...tags].sort((a, b) => {
+    const countDiff = tagCounts[b] - tagCounts[a];
+    if (countDiff !== 0) return countDiff;
+    return a.localeCompare(b);
+});
 ---
-<Layout title='tags' currentPath='/tags'>
-    <h1>Etiquetas:</h1>
-    
-    <div>
-        {tags.map((tag) => (
-          <p><a href={`/tags/${tag}`}>{tag}</a></p>
-        ))}
-    </div>
 
+<Layout title='Etiquetas | Blog' currentPath='/tags'>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <!-- Breadcrumb -->
+                <div class="mb-6">
+                    <Button variant="outline" size="sm" href="/blog">
+                        <Icon name="arrow-left" size="sm" class="mr-2" />
+                        Volver al blog
+                    </Button>
+                </div>
+
+                <Heading level={1} class="leading-tight mb-4">
+                    🏷️ <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Todas las Etiquetas</span>
+                </Heading>
+                
+                <Text color="secondary" size="xl" class="text-center mb-8 max-w-3xl mx-auto">
+                    Explora el contenido del blog organizado por temas. {tags.length} {tags.length === 1 ? 'etiqueta' : 'etiquetas'} {tags.length === 1 ? 'disponible' : 'disponibles'}.
+                </Text>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tags Grid -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {sortedTags.length === 0 ? (
+                <div class="text-center py-12">
+                    <Text color="muted" size="lg">
+                        No hay etiquetas disponibles aún.
+                    </Text>
+                </div>
+            ) : (
+                <>
+                    <!-- Tags populares (primeros 3) -->
+                    {sortedTags.length > 3 && (
+                        <div class="mb-12">
+                            <Heading level={2} size="xl" class="mb-6">
+                                🔥 Más Populares
+                            </Heading>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {sortedTags.slice(0, 3).map((tag: string) => (
+                                    <a 
+                                        href={`/tags/${tag}/`}
+                                        class="group bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-500 hover:shadow-lg transition-all duration-300"
+                                    >
+                                        <div class="flex items-center justify-between mb-3">
+                                            <Badge variant="primary" size="md">
+                                                #{tag}
+                                            </Badge>
+                                            <Icon name="arrow-right" size="sm" class="text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                                        </div>
+                                        <Text color="secondary" size="sm">
+                                            {tagCounts[tag]} {tagCounts[tag] === 1 ? 'artículo' : 'artículos'}
+                                        </Text>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    <!-- Todas las etiquetas -->
+                    <div class="mb-6">
+                        <Heading level={2} size="xl" class="mb-6">
+                            {sortedTags.length > 3 ? '📚 Todas las Etiquetas' : '📚 Etiquetas Disponibles'}
+                        </Heading>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        {sortedTags.map((tag: string) => (
+                            <a 
+                                href={`/tags/${tag}/`}
+                                class="group inline-flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-3 hover:border-blue-500 hover:shadow-md transition-all duration-300"
+                            >
+                                <Badge variant="primary" size="md">
+                                    #{tag}
+                                </Badge>
+                                <span class="text-sm text-gray-600 group-hover:text-blue-600 transition-colors">
+                                    ({tagCounts[tag]})
+                                </span>
+                                <Icon name="arrow-right" size="sm" class="text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all opacity-0 group-hover:opacity-100" />
+                            </a>
+                        ))}
+                    </div>
+                </>
+            )}
+        </div>
+    </section>
 </Layout>
 
