@@ -1,0 +1,37 @@
+---
+import Footer from '../components/organisms/Footer.astro';
+import Header from '../components/organisms/Header.astro';
+
+const { frontmatter, url } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={frontmatter.description} />
+		<meta name="keywords" content="programación, ciberseguridad, monitoreo, hardening, tutoriales, carlos mairena, costa rica, guanacaste">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content="v1.0" />
+		<title>{frontmatter.title}</title>
+	</head>
+	
+	<Header currentPath={url} />
+
+	<body class="font-sans bg-white text-gray-900">
+		<article class="text-justify">
+			<h1 class="text-4xl text-center m-5">{frontmatter.title}</h1>
+			  
+			<p>Fecha de publicación: {frontmatter.pubDate.toString().slice(0,10)}</p>
+			  <p><em>{frontmatter.description}</em></p>
+			  <p>Escrito por: {frontmatter.author}</p>
+			  
+			<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+			
+			<slot />
+		</article>	
+	</body>
+
+	<Footer />
+</html>
