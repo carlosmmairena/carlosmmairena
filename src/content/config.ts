@@ -20,7 +20,7 @@ const projectsCollection = defineCollection({
 
 // Define a `loader` and `schema` for each collection
 const postCollection = defineCollection({
-    loader: glob({ pattern: '**/[^_]*.md', base: "./src/blog" }),
+    loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/blog" }),
     schema: z.object({
       title: z.string(),
       pubDate: z.date(),
