@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/organisms/Header.astro';
 import Card from '../components/molecules/Card.astro';
 import ProjectCard from '../components/molecules/ProjectCard.astro';
 import SocialLinks from '../components/molecules/SocialLinks.astro';
@@ -15,9 +14,7 @@ import RemoteImage, {profileImage} from '../components/atoms/RemoteImage.astro';
 const featuredProjects = await getFeaturedProjects();
 ---
 
-<Layout title="Inicio | Carlos Mairena">
-	<Header currentPath="/" />
-	
+<Layout title="Inicio | Carlos Mairena" currentPath="/">
 	<!-- Hero Section -->
 	<main class="bg-gradient-to-br from-blue-50 to-purple-50 py-20">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

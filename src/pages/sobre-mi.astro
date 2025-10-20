@@ -1,16 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/organisms/Header.astro';
-import Heading from '../components/atoms/Heading.astro';
 import Text from '../components/atoms/Text.astro';
 import Card from '../components/molecules/Card.astro';
+import Heading from '../components/atoms/Heading.astro';
 import SocialLinks from '../components/molecules/SocialLinks.astro';
 import RemoteImage, { profileImage } from '../components/atoms/RemoteImage.astro';
 ---
 
-<Layout title="Sobre mí | Carlos Mairena">
-	<Header currentPath="/sobre-mi" />
-	
+<Layout title="Sobre mí | Carlos Mairena" currentPath="/sobre-mi" >
 	<!-- Hero Section -->
 	<section class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

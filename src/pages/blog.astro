@@ -1,0 +1,17 @@
+---
+import Header from '../components/organisms/Header.astro';
+import Layout from '../layouts/Layout.astro';
+
+const posts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+
+---
+
+<Layout title="Blog | Carlos Mairena" currentPath="/blog">
+    <h1>Este es mi blog</h1>
+
+    <h2>mis publicaciones:</h2>
+    <ul>
+        {posts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+    </ul>
+
+</Layout>

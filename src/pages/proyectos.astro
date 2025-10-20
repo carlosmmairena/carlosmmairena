@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/organisms/Header.astro';
 import Heading from '../components/atoms/Heading.astro';
 import Text from '../components/atoms/Text.astro';
 import ProjectCard from '../components/molecules/ProjectCard.astro';
@@ -14,9 +13,7 @@ const projectStats = await getProjectStats();
 const projectCategories = ["Todos", "Web Apps", "Infrastructure Projects", "Security Tools"];
 ---
 
-<Layout title="Proyectos | Carlos Mairena">
-	<Header currentPath="/proyectos" />
-	
+<Layout title="Proyectos | Carlos Mairena" currentPath="/proyectos">
 	<!-- Hero Section -->
 	<section class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

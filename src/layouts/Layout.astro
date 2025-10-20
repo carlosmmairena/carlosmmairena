@@ -1,8 +1,10 @@
 ---
 import Footer from '../components/organisms/Footer.astro';
+import Header from '../components/organisms/Header.astro';
 
 interface Props {
 	title: string;
+	currentPath: string;
 }
 
 const { title } = Astro.props;
@@ -19,6 +21,7 @@ const { title } = Astro.props;
 		<meta name="generator" content="v1.0" />
 		<title>{title}</title>
 	</head>
+	<Header currentPath={Astro.props.currentPath} />
 	<body class="font-sans bg-white text-gray-900">
 		<slot />
 	</body>
