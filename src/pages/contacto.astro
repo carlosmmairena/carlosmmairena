@@ -17,8 +17,7 @@ import Icon from '../components/atoms/Icon.astro';
 					💬 <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Hablemos sobre tus ideas</span>
 				</Heading>
 				<Text color="secondary" size="xl" class="max-w-3xl mx-auto">
-					¿Tienes una idea? ¿Necesitas ayuda con desarrollo, infraestructura o seguridad?
-					Estoy aquí para apoyarte.
+					Cuéntame sobre tu proyecto y veamos cómo puedo ayudarte a alcanzar tus objetivos tecnológicos.
 				</Text>
 			</div>
 		</div>
@@ -28,11 +27,11 @@ import Icon from '../components/atoms/Icon.astro';
 	<main class="py-16 bg-white">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 			<!-- Contact Methods -->
-			<div class="grid grid-cols-1 gap-12 mb-16">
+			<div class="grid grid-cols-1 gap-12">
 				<!-- Direct Contact -->
 				<div>
 					<Heading level={2} size="2xl" class="mb-8">
-						Información de Contacto
+						Contacto
 					</Heading>
 					
 					<div class="space-y-6">
@@ -79,31 +78,6 @@ import Icon from '../components/atoms/Icon.astro';
 					
 				</div>
 			</div>
-			
-			<!-- Project Inquiry -->
-			<section class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-				<div class="max-w-3xl mx-auto text-center">
-					<Heading level={2} size="2xl" class="text-white mb-6">
-						¿Listo para Empezar?
-					</Heading>
-					<Text size="lg" class="text-white mb-8">
-						Cuéntame sobre tu proyecto y veamos cómo puedo ayudarte a alcanzar tus objetivos tecnológicos. 
-						Cada proyecto comienza con una conversación.
-					</Text>
-					
-					<div class="flex flex-col sm:flex-row gap-4 justify-center">
-						<Button 
-							variant="outline" 
-							size="lg" 
-							href="https://linkedin.com/in/cristiancrm?msg=Hola Carlos, tengo un proyecto en mente y me gustaría discutirlo contigo."
-							class="bg-white text-blue-600 border-white hover:bg-gray-100"
-						>
-							<Icon name="linkedin" size="sm" class="mr-2" />
-							Envíame un mensaje en LinkedIn
-						</Button>
-					</div>
-				</div>
-			</section>
 		</div>
 	</main>
 	
@@ -116,16 +90,16 @@ import Icon from '../components/atoms/Icon.astro';
 			
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				<Card
-					title="¿Trabajas con startups?"
-					body="¡Absolutamente! Me encanta trabajar con startups y ayudarlas a construir su MVP, escalar su infraestructura y establecer buenas prácticas desde el inicio."
+					title="¿En qué consisten las asesorías?"
+					body="Las asesorías varían pero generalmente consisten en colaborar con tu equipo de ingeniería para mejorar la eficiencia del equipo, equilibrar cargas de trabajo y mejorar la comunicación entre equipos."
 				/>
 				<Card
-					title="¿Manejas proyectos internacionales?"
-					body="Sí, trabajo con clientes de todo el mundo. Estoy acostumbrado a trabajar en diferentes zonas horarias y tengo experiencia en colaboración remota."
+					title="¿Cómo puedo contactarme contigo?"
+					body="Puedes contactarme a través de LinkedIn, envíame un mensaje diciéndome que te interesa saber cómo puedo ayudarte."
 				/>
 				<Card
 					title="¿Cuál es tu stack preferido?"
-					body="Soy agnóstico en tecnologías, pero tengo preferencia por React/Vue en frontend, Node.js/Python en backend, y AWS/Docker para infraestructura."
+					body="Soy agnóstico en tecnologías, pero tengo preferencia por React/Astro en frontend, Node.js/Python en backend, y AWS/Docker para infraestructura."
 				/>
 				<Card
 					title="¿Ofreces soporte post-lanzamiento?"
