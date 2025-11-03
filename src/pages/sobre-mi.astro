@@ -5,6 +5,8 @@ import Card from '../components/molecules/Card.astro';
 import Heading from '../components/atoms/Heading.astro';
 import SocialLinks from '../components/molecules/SocialLinks.astro';
 import RemoteImage, { profileImage } from '../components/atoms/RemoteImage.astro';
+import Icon from '../components/atoms/Icon.astro';
+import Button from '../components/atoms/Button.astro';
 ---
 
 <Layout title="Sobre mí | Carlos Mairena" currentPath="/sobre-mi" >
@@ -152,9 +154,10 @@ import RemoteImage, { profileImage } from '../components/atoms/RemoteImage.astro
 				<a href="/contacto" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
 					Trabajemos Juntos
 				</a>
-				<a href="/cv.pdf" class="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors duration-200">
+				<Button variant="secondary" size="lg" href="/CV_CarlosMairena-2.pdf" external={true}>
+					<Icon name="download" size="sm" class="mr-2" />
 					Descargar CV
-				</a>
+				</Button>
 			</div>
 		</div>
 	</section>

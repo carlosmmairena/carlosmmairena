@@ -9,9 +9,17 @@ import Text from '../components/atoms/Text.astro';
 import Icon from '../components/atoms/Icon.astro';
 import { getFeaturedProjects } from '../utils/projects';
 import RemoteImage, {profileImage} from '../components/atoms/RemoteImage.astro';
+import BlogPostCard from '../components/molecules/BlogPostCard.astro';
+import { getCollection } from 'astro:content';
 
 // Obtener proyectos destacados desde Content Collections
 const featuredProjects = await getFeaturedProjects();
+
+// Obtener los últimos 3 posts desde Content Collections más recientes
+const latestPosts = (await getCollection("posts")).sort((a: any, b: any) => 
+	b.data.pubDate.getTime() - a.data.pubDate.getTime()
+).slice(0, 3);
+
 ---
 
 <Layout title="Inicio | Carlos Mairena" currentPath="/">
@@ -21,7 +29,7 @@ const featuredProjects = await getFeaturedProjects();
 			<div class="text-center">
 				<!-- Foto profesional -->
 				<div class="mb-8">
-					<div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
+					<div class="w-36 h-36 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
 							<!-- Foto profesional -->
 							<RemoteImage src={profileImage} 
 								alt="Carlos Mairena López"
@@ -32,12 +40,14 @@ const featuredProjects = await getFeaturedProjects();
 				</div>
 				
 				<Heading level={1} class="text-center leading-tight mb-4">
-					Bienvenido a <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">carlosmmairena.com</span>
+					Estás en <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">carlosmmairena.com</span> 👋🏽
 				</Heading>
 				
+				<Text color="secondary" size="xl" class="text-center mb-5 max-w-3xl mx-auto">
+					Compartimos ideas y conocimientos sobre infraestructura de servidores, redes, ciberseguridad y más.
+				</Text>
 				<Text color="secondary" size="xl" class="text-center mb-8 max-w-3xl mx-auto">
-					Desarrollador Full Stack especializado en infraestructura de servidores, redes y ciberseguridad. 
-					Creando soluciones robustas desde el código hasta la implementación.
+					Más allá del código, unidos hacemos más.
 				</Text>
 				
 				<!-- CTAs -->
@@ -46,9 +56,16 @@ const featuredProjects = await getFeaturedProjects();
 						<Icon name="arrow-right" size="sm" class="mr-2" />
 						Proyectos
 					</Button>
-					<Button variant="outline" size="lg" href="/CV_CarlosMairena-2.pdf" external={true}>
-						<Icon name="download" size="sm" class="mr-2" />
-						Descargar CV
+					<Button variant="outline" size="lg" href="/sobre-mi" >
+						<Icon name="external-link" size="sm" class="mr-2" />
+						Sobre mí
+					</Button>
+				</div>
+
+				<div class="flex justify-center mb-8">
+					<Button variant="secondary" size="lg" href="/contacto">
+						<Icon name="external-link" size="sm" class="mr-2" />
+						Necesito una asesoría
 					</Button>
 				</div>
 				
@@ -73,47 +90,81 @@ const featuredProjects = await getFeaturedProjects();
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				<Card
 					title="💻 Desarrollo Full Stack"
-					body="Aplicaciones web modernas con React, Vue, Astro y tecnologías de vanguardia. Frontend y backend escalables."
+					body="Diseño y programación de aplicaciones web y móviles, desde la idea hasta el despliegue en producción."
 				/>
 				<Card
-					title="🏗️ Infraestructura"
-					body="Infraestructura como código con Docker, Kubernetes, Terraform y servicios en la nube (AWS, Azure)."
+					title="🏗️ Infraestructura y Ciberseguridad"
+					body="Implementación de infraestructura on-premise y en la nube, hardening, auditorías de seguridad, entre otros."
 				/>
 				<Card
-					title="🔐 Ciberseguridad"
-					body="Hardening de servidores, auditorías de seguridad, pentesting y monitoreo de sistemas críticos."
+					title="💡 Asesorías"
+					body="Apoyo principalmente en temas de trabajo en equipo, inteligencia artificial, servidores, redes, despliegue de aplicaciones y ciberseguridad."
 				/>
 			</div>
 		</div>
 	</section>
 	
 	<!-- Featured Projects Section -->
+	{featuredProjects.length > 0 && (
+		<section class="py-16 bg-white">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="text-center mb-12">
+					<Heading level={2} size="3xl" class="mb-4">
+						Proyectos
+					</Heading>
+					<Text color="secondary" size="lg" class="max-w-2xl mx-auto mb-6">
+						Proyectos que he desarrollado, espero que estos sean de gran ayuda para ti.
+					</Text>
+					<Button variant="secondary" href="/proyectos">
+						Ver más →
+					</Button>
+				</div>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{featuredProjects.map(project => (
+						<ProjectCard
+							title={project.title}
+							description={project.description}
+							technologies={project.technologies}
+							githubUrl={project.githubUrl}
+							demoUrl={project.demoUrl}
+							projectCategory={project.projectCategory}
+							category={project.category as 'primary' | 'warning' | 'danger'}
+						/>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	<!-- Blog Section -->
 	<section class="py-16 bg-gray-50">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
 				<Heading level={2} size="3xl" class="mb-4">
-					Proyectos
+					Últimas publicaciones
 				</Heading>
 				<Text color="secondary" size="lg" class="max-w-2xl mx-auto mb-6">
-					Proyectos en los que he trabajado, espero que estos sean de gran ayuda para ti.
+					Últimos datos sobre ideas que espero puedan ser de ayuda para ti, si quieres ver más puede ir a mi blog.
 				</Text>
-				<Button variant="outline" href="/proyectos">
-					Ver todos →
+				<Button variant="secondary" href="/blog">
+					→ Ir al blog
 				</Button>
 			</div>
-			
+
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{featuredProjects.map(project => (
-					<ProjectCard
-						title={project.title}
-						description={project.description}
-						technologies={project.technologies}
-						githubUrl={project.githubUrl}
-						demoUrl={project.demoUrl}
-						projectCategory={project.projectCategory}
-						category={project.category as 'primary' | 'warning' | 'danger'}
-					/>
-				))}
+				{latestPosts.map(post => (
+					<BlogPostCard
+						imageUrl={post.data.image?.url}
+						imageAlt={post.data.image?.alt}
+						slug={post.id}
+						title={post.data.title}
+						description={post.data.description}
+						pubDate={post.data.pubDate}
+						author={post.data.author}
+						tags={post.data.tags}
+						/>
+					))}
 			</div>
 		</div>
 	</section>
