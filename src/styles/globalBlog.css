@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+
+@layer base {
+    h1 {
+        @apply text-3xl font-bold mb-2;
+    }
+    h2 {
+        @apply text-2xl font-bold mb-2;
+    }
+    h3 {
+        @apply text-xl font-bold mb-2;
+    }
+    h4 {
+        @apply text-lg font-bold mb-2;
+    }
+
+    p {
+        @apply text-gray-800 leading-relaxed mb-6;
+    }
+    
+    a {
+        @apply hover:text-blue-800 hover:underline;
+        @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
+    }
+}
