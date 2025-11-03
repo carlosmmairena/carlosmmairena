@@ -1,12 +1,12 @@
 ---
-title: 'My First Blog Post'
-pubDate: 2022-07-01
-description: 'This is the first post of my new Astro blog.'
-author: 'Astro Learner'
+title: 'Mi primer Post 🎉'
+pubDate: 2025-11-05
+description: 'Nuevas experiencias para comenzar el 2026. ¡Mi sitio web personal! 🪩'
+author: 'Carlos Mairena'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
-tags: ["astro", "blogging", "learning in public"]
+    alt: 'Imagen de este primer post.'
+tags: ["blogging", "personal"]
 ---
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
 
