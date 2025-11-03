@@ -10,28 +10,28 @@ import RemoteImage, {profileImage} from '../atoms/RemoteImage.astro';
 
 <footer class="bg-blue-900 text-white">
 	<!-- Main Footer Content -->
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-6 py-12">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+		
 			<!-- Brand & Description -->
-			<div class="lg:col-span-2">
-				<div class="flex items-start space-x-4">
-					<div class="mb-4">
-						<div class="w-14 h-14 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
-								<!-- Foto profesional -->
-								<RemoteImage src={profileImage}
-									alt="Carlos Mairena López"
-									class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center"
-									loading="eager"
-								/>
+			<div>
+				<div class="flex items-center space-x-4 mb-4">
+					<div class="flex-shrink-0">
+						<div class="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
+							<!-- Foto profesional -->
+							<RemoteImage src={profileImage}
+								alt="Carlos Mairena López"
+								class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center"
+								loading="lazy"
+							/>
 						</div>
 					</div>
-					<Heading level={3} size="2xl" class="text-white">
+					<Heading level={3} size="xl" class="text-white mb-0">
 						Carlos Mairena López
 					</Heading>
 				</div>
 				<Text color="secondary" class="text-white mb-6 max-w-md">
-					Desarrollador Full Stack especializado en infraestructura, redes y ciberseguridad. 
-					Creando soluciones robustas desde Costa Rica para el mundo.
+					Compartiendo mis conocimientos desde Costa Rica para la comunidad.
 				</Text>
 				
 				<!-- Technologies -->
@@ -46,57 +46,24 @@ import RemoteImage, {profileImage} from '../atoms/RemoteImage.astro';
 					</Text>
 				</div>
 			</div>
-			
-			<!-- Quick Links -->
-			<div>
-				<Heading level={4} size="lg" class="text-white mb-4">
-					Menu
-				</Heading>
-				<ul class="space-y-3">
-					<li>
-						<a href="/" class="text-gray-300 hover:text-white transition-colors duration-200">
-							Inicio
-						</a>
-					</li>
-					<li>
-						<a href="/sobre-mi" class="text-gray-300 hover:text-white transition-colors duration-200">
-							Sobre mí
-						</a>
-					</li>
-					<li>
-						<a href="/proyectos" class="text-gray-300 hover:text-white transition-colors duration-200">
-							Proyectos
-						</a>
-					</li>
-					<li>
-						<a href="/blog" class="text-gray-300 hover:text-white transition-colors duration-200">
-							Blog
-						</a>
-					</li>
-					<li>
-						<a href="/contacto" class="text-gray-300 hover:text-white transition-colors duration-200">
-							Contacto
-						</a>
-					</li>
-				</ul>
-			</div>
-			
+		
+		
 			<!-- Contact & Social -->
-			<div>
-				<Heading level={4} size="lg" class="text-white mb-4">
-					Conectemos
-				</Heading>
-				
-				
+			<div>				
 				<!-- Social Links -->
 				<div class="mb-6">
-					<SocialLinks size="md" class="space-x-3" />
+					<SocialLinks size="md" class="space-x-3 [&_a]:text-gray-300 [&_a]:hover:text-white" />
 				</div>
 				
 				<!-- CTA Button -->
 				<Button variant="primary" size="md" href="/proyectos" class="w-full">
 					<Icon name="arrow-right" size="sm" class="mr-2" />
-					Ver Proyectos
+					Proyectos
+				</Button>
+
+				<Button variant="secondary" size="md" href="/blog" class="w-full mt-4">
+					<Icon name="arrow-right" size="sm" class="mr-2" />
+					Blog
 				</Button>
 			</div>
 		</div>
@@ -111,13 +78,6 @@ import RemoteImage, {profileImage} from '../atoms/RemoteImage.astro';
 					<Text size="sm" class="text-white">
 						© 2024 Carlos Mairena. Todos los derechos reservados.
 					</Text>
-				</div>
-				
-				<!-- Additional Links -->
-				<div class="flex items-center space-x-6">
-					<a href="/cv.pdf" class="text-white hover:text-white transition-colors duration-200 text-sm">
-						Descargar CV
-					</a>
 				</div>
 			</div>
 		</div>
