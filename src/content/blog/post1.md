@@ -1,6 +1,6 @@
 ---
 title: 'Mi primer Post 🎉'
-pubDate: 2025-11-05
+pubDate: 2025-11-03
 description: 'Nuevas experiencias para comenzar el 2026. ¡Mi sitio web personal! 🪩'
 author: 'Carlos Mairena'
 image:
