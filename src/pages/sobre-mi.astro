@@ -18,7 +18,7 @@ import Button from '../components/atoms/Button.astro';
 					👨🏽‍💻 <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Carlos Mairena</span>
 				</Heading>
 				<Text color="secondary" size="xl" class="max-w-3xl mx-auto">
-					Desarrollador apasionado por crear soluciones tecnológicas que impacten positivamente en las organizaciones
+					Quiero transformar los objetivos de negocio con soluciones técnicas escalables y guiar a equipos de ingeniería hacia la excelencia operativa.
 				</Text>
 			</div>
 		</div>
@@ -42,6 +42,11 @@ import Button from '../components/atoms/Button.astro';
 					</div>
 					<div class="text-center lg:text-left mt-6">
 						<SocialLinks size="md" class="justify-center lg:justify-start" />
+
+						<Button variant="secondary" size="sm" href="/CV_CarlosMairena-2.pdf" class="mt-4" external={true}>
+							<Icon name="download" size="sm" class="mr-2" />
+							Descargar CV
+						</Button>
 					</div>
 				</div>
 				
@@ -51,24 +56,17 @@ import Button from '../components/atoms/Button.astro';
 					</Heading>
 					<div class="space-y-4">
 						<Text color="primary" size="lg">
-							¡Hola! Soy Carlos Mairena, un desarrollador Full Stack con más de 5 años de experiencia 
-							creando soluciones tecnológicas robustas y escalables.
+							¡Hola! Soy Carlos Mairena López, SysAdmin y Full-Stack Developer dedicado a impulsar la eficiencia y la calidad en el 
+							desarrollo de soluciones mediante tecnologías.
 						</Text>
 						<Text color="secondary">
-							Mi carrera comenzó en el mundo de la administración de sistemas y redes, donde desarrollé 
-							una sólida comprensión de la infraestructura tecnológica. Esta base me ha permitido crear 
-							aplicaciones web que no solo funcionan bien en el frontend, sino que también están 
-							optimizadas para la infraestructura que las soporta.
-						</Text>
-						<Text color="secondary">
-							A lo largo de mi trayectoria, he trabajado tanto en startups ágiles como en empresas 
-							consolidadas, lo que me ha dado una perspectiva única sobre cómo adaptar las soluciones 
+							En mi carrera profesional he tenido la oportunidad de colaborar en startups pequeñas e 
+							instituciones consolidadas de la mano con startups dedicadas a ofrecer soluciones 
 							tecnológicas a diferentes contextos y necesidades empresariales.
 						</Text>
 						<Text color="secondary">
-							Actualmente, me especializo en crear arquitecturas de software que sean tanto elegantes 
-							en su código como robustas en su implementación, siempre con un enfoque en la seguridad 
-							y la escalabilidad.
+							Actualmente, domino ambientes como Node.js, Laravel/PHP, orquestación con Docker, y el despliegue en entornos
+							On-Premise y Cloud (AWS).
 						</Text>
 					</div>
 				</div>
@@ -99,66 +97,19 @@ import Button from '../components/atoms/Button.astro';
 				</div>
 			</section>
 			
-			<!-- Personal Interests -->
-			<section class="bg-gray-50 rounded-xl p-8">
+			<!-- Blog Section -->
+			<section class="bg-gray-50 rounded-xl p-8 text-center">
 				<Heading level={2} size="2xl" class="text-center mb-8">
-					Más Allá del Código
+					📝 Te invito visitar mi Blog
 				</Heading>
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-					<div class="text-center">
-						<div class="text-4xl mb-4">🔬</div>
-						<Heading level={3} size="lg" class="mb-2">
-							Investigación Tecnológica
-						</Heading>
-						<Text color="secondary" size="sm">
-							Siempre explorando nuevas tecnologías emergentes, especialmente en el ámbito de la 
-							inteligencia artificial y la automatización de infraestructura.
-						</Text>
-					</div>
-					<div class="text-center">
-						<div class="text-4xl mb-4">🎓</div>
-						<Heading level={3} size="lg" class="mb-2">
-							Educación Continua
-						</Heading>
-						<Text color="secondary" size="sm">
-							Comprometido con el aprendizaje permanente a través de certificaciones, cursos 
-							especializados y participación en comunidades tecnológicas.
-						</Text>
-					</div>
-					<div class="text-center">
-						<div class="text-4xl mb-4">🌱</div>
-						<Heading level={3} size="lg" class="mb-2">
-							Proyectos Open Source
-						</Heading>
-						<Text color="secondary" size="sm">
-							Contribuyo activamente a proyectos de código abierto y mantengo herramientas que 
-							ayudan a otros desarrolladores en su trabajo diario.
-						</Text>
-					</div>
-				</div>
+				<Text color="secondary" size="lg" class="mb-8 max-w-2xl mx-auto">
+					Encontrarás contenido sobre desarrollo web, infraestructura, ciberseguridad y más.
+				</Text>
+				<Button variant="secondary" size="lg" href="/blog">
+					<Icon name="external-link" size="sm" class="mr-2" />
+					Ir al blog
+				</Button>
 			</section>
 		</div>
 	</main>
-	
-	<!-- Location & Contact -->
-	<section class="py-16 bg-blue-50">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<Heading level={2} size="2xl" class="mb-6">
-				Ubicado en Costa Rica 🇨🇷
-			</Heading>
-			<Text color="secondary" size="lg" class="mb-8 max-w-2xl mx-auto">
-				Desde la hermosa provincia de Guanacaste, trabajo con clientes y equipos de todo el mundo. 
-				La colaboración remota y la comunicación efectiva son parte integral de mi forma de trabajar.
-			</Text>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a href="/contacto" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
-					Trabajemos Juntos
-				</a>
-				<Button variant="secondary" size="lg" href="/CV_CarlosMairena-2.pdf" external={true}>
-					<Icon name="download" size="sm" class="mr-2" />
-					Descargar CV
-				</Button>
-			</div>
-		</div>
-	</section>
 </Layout>

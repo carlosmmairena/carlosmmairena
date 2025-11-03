@@ -4,6 +4,8 @@ import Heading from '../components/atoms/Heading.astro';
 import Text from '../components/atoms/Text.astro';
 import ProjectCard from '../components/molecules/ProjectCard.astro';
 import { getAllProjects, getProjectStats } from '../utils/projects';
+import Button from '../components/atoms/Button.astro';
+import Icon from '../components/atoms/Icon.astro';
 
 // Obtener todos los proyectos y estadísticas desde Content Collections
 const allProjects = await getAllProjects();
@@ -22,7 +24,7 @@ const projectCategories = ["Todos", "Web Apps", "Infrastructure Projects", "Secu
 					💻 <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Proyectos</span>
 				</Heading>
 				<Text color="secondary" size="xl" class="max-w-3xl mx-auto">
-					Una selección de proyectos que muestran mi experiencia en desarrollo web, infraestructura y ciberseguridad
+					Una colección de proyectos que comparto contigo, espero sean de mucha ayuda.
 				</Text>
 			</div>
 		</div>
@@ -91,21 +93,24 @@ const projectCategories = ["Todos", "Web Apps", "Infrastructure Projects", "Secu
 	</main>
 	
 	<!-- CTA Section -->
-	<section class="py-16 bg-blue-500">
+	<section class="py-16">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<Heading level={2} size="2xl" class="mb-6 text-white">
+			<Heading level={2} size="2xl" class="mb-6">
 				¿Tienes un proyecto en mente?
 			</Heading>
-			<Text size="lg" class="text-white mb-8 max-w-2xl mx-auto">
-				Me encanta trabajar en proyectos desafiantes. Si tienes una idea o necesitas ayuda 
-				con desarrollo, infraestructura o seguridad, hablemos.
+			<Text size="lg" class="mb-8 max-w-2xl mx-auto">
+				Si tienes una idea o necesitas ayuda con desarrollo, infraestructura, seguridad o similares, hablemos.
+				Estoy a un clic de distancia.
 			</Text>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a href="/contacto" class="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200">
-					Iniciar Conversación
+				<Button variant="secondary" size="lg" href="/contacto">
+					<Icon name="external-link" size="sm" class="mr-2" />
+					Conversemos
+				</Button>
 				</a>
-				<a href="/sobre-mi" class="inline-flex items-center justify-center px-6 py-3 border border-blue-200 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
-					Conocer Más Sobre Mí
+				<Button variant="primary" size="lg" href="/blog">
+					<Icon name="external-link" size="sm" class="mr-2" />
+					Ir al Blog
 				</a>
 			</div>
 		</div>
