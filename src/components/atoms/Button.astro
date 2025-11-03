@@ -5,6 +5,7 @@ interface Props {
 	href?: string;
 	type?: 'button' | 'submit' | 'reset';
 	class?: string;
+	external?: boolean;
 }
 
 const { 
@@ -13,6 +14,7 @@ const {
 	href, 
 	type = 'button',
 	class: className = '',
+	external = false,
 	...props 
 } = Astro.props;
 
@@ -38,6 +40,7 @@ const Element = href ? 'a' : 'button';
 <Element 
 	class={classes}
 	href={href}
+	target={external ? '_blank' : undefined}
 	type={!href ? type : undefined}
 	{...props}
 >

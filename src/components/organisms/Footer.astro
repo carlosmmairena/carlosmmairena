@@ -21,7 +21,7 @@ import RemoteImage, {profileImage} from '../atoms/RemoteImage.astro';
 								<RemoteImage src={profileImage}
 									alt="Carlos Mairena López"
 									class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center"
-									loading="lazy"
+									loading="eager"
 								/>
 						</div>
 					</div>
@@ -36,9 +36,6 @@ import RemoteImage, {profileImage} from '../atoms/RemoteImage.astro';
 				
 				<!-- Technologies -->
 				<div class="mb-6">
-					<Text weight="semibold" class="text-white mb-3">
-						Tecnologías que domino:
-					</Text>
 					<TechIcons size="md" />
 				</div>
 				
@@ -53,7 +50,7 @@ import RemoteImage, {profileImage} from '../atoms/RemoteImage.astro';
 			<!-- Quick Links -->
 			<div>
 				<Heading level={4} size="lg" class="text-white mb-4">
-					Enlaces Rápidos
+					Menu
 				</Heading>
 				<ul class="space-y-3">
 					<li>
@@ -69,6 +66,11 @@ import RemoteImage, {profileImage} from '../atoms/RemoteImage.astro';
 					<li>
 						<a href="/proyectos" class="text-gray-300 hover:text-white transition-colors duration-200">
 							Proyectos
+						</a>
+					</li>
+					<li>
+						<a href="/blog" class="text-gray-300 hover:text-white transition-colors duration-200">
+							Blog
 						</a>
 					</li>
 					<li>
@@ -88,9 +90,6 @@ import RemoteImage, {profileImage} from '../atoms/RemoteImage.astro';
 				
 				<!-- Social Links -->
 				<div class="mb-6">
-					<Text weight="semibold" class="text-white mb-3">
-						Redes Sociales:
-					</Text>
 					<SocialLinks size="md" class="space-x-3" />
 				</div>
 				

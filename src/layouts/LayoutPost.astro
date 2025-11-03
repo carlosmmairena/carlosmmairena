@@ -7,6 +7,7 @@ import Icon from '../components/atoms/Icon.astro';
 import Text from '../components/atoms/Text.astro';
 
 import "../styles/global.css";
+import RemoteImage from '../components/atoms/RemoteImage.astro';
 
 const { frontmatter, url } = Astro.props;
 
@@ -87,10 +88,10 @@ const formattedDate = frontmatter.pubDate.toLocaleDateString('es-ES', {
 		{frontmatter.image && frontmatter.image.url && (
 			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-12">
 				<div class="rounded-xl overflow-hidden shadow-xl">
-					<img 
+					<RemoteImage 
 						src={frontmatter.image.url} 
 						alt={frontmatter.image.alt || frontmatter.title}
-						class="w-full h-auto object-cover"
+						class="w-5xl h-auto object-cover"
 					/>
 				</div>
 			</div>

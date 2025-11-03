@@ -2,6 +2,7 @@
 import Badge from '../atoms/Badge.astro';
 import Button from '../atoms/Button.astro';
 import Icon from '../atoms/Icon.astro';
+import RemoteImage from '../atoms/RemoteImage.astro';
 import Text from '../atoms/Text.astro';
 
 interface Props {
@@ -37,7 +38,7 @@ const formattedDate = pubDate.toLocaleDateString('es-ES', {
 	<!-- Post Image -->
 	{imageUrl && (
 		<div class="h-48 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden">
-			<img 
+			<RemoteImage 
 				src={imageUrl} 
 				alt={imageAlt || title} 
 				class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
