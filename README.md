@@ -1,8 +1,6 @@
 <h1 align="center">Hi 👋, I'm Carlos Mairena</h1>
 <h3 align="center">A passionate developer from Costa Rica 🇨🇷 </h3>
 
-- 💬 Ask me about **PHP, Python, NodeJS or GNU/Linux**
-
 <h3 align="left">🔗 Connect:</h3>
 
 <p align="left">
