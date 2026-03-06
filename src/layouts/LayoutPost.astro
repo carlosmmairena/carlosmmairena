@@ -86,7 +86,7 @@ const formattedDate = frontmatter.pubDate.toLocaleDateString('es-ES', {
 
 		<!-- Featured Image -->
 		{frontmatter.image && frontmatter.image.url && (
-			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-12">
+			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-10">
 				<div class="rounded-xl overflow-hidden shadow-xl">
 					<RemoteImage 
 						src={frontmatter.image.url} 
@@ -98,7 +98,7 @@ const formattedDate = frontmatter.pubDate.toLocaleDateString('es-ES', {
 		)}
 
 		<!-- Article Content -->
-		<article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+		<article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
 			<div class="prose prose-lg prose-gray max-w-none
 				prose-headings:font-bold prose-headings:text-gray-900
 				prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6

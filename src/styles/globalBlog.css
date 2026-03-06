@@ -6,22 +6,26 @@
         @apply text-3xl font-bold mb-2;
     }
     h2 {
-        @apply text-2xl font-bold mb-2;
+        @apply text-2xl font-bold mb-2 mt-10;
     }
     h3 {
-        @apply text-xl font-bold mb-2;
+        @apply text-xl font-bold mb-2 mt-10;
     }
     h4 {
-        @apply text-lg font-bold mb-2;
+        @apply text-lg font-bold mb-2 mt-10;
     }
 
     p {
-        @apply text-gray-800 leading-relaxed mb-6;
+        @apply text-gray-800 leading-relaxed mb-2;
     }
     
     strong a {
         @apply hover:text-blue-800 hover:underline;
         @apply bg-linear-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
+    }
+
+    hr {
+        @apply border-gray-300 mt-3;
     }
 
     table {
