@@ -24,12 +24,12 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 
 <Layout title="Inicio | Carlos Mairena" currentPath="/">
 	<!-- Hero Section -->
-	<main class="bg-gradient-to-br from-blue-50 to-purple-50 py-20">
+	<main class="bg-linear-to-br from-blue-50 to-purple-50 py-20">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center">
 				<!-- Foto profesional -->
 				<div class="mb-8">
-					<div class="w-36 h-36 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
+					<div class="w-36 h-36 mx-auto rounded-full bg-linear-to-r from-blue-500 to-purple-600 p-1">
 							<!-- Foto profesional -->
 							<RemoteImage src={profileImage} 
 								alt="Carlos Mairena López"
@@ -40,7 +40,7 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 				</div>
 				
 				<Heading level={1} class="text-center leading-tight mb-4">
-					Estás en <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">carlosmmairena.com</span> 👋🏽
+					Estás en <span class="bg-linear-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">carlosmmairena.com</span> 👋🏽
 				</Heading>
 				
 				<Text color="secondary" size="xl" class="text-center mb-5 max-w-3xl mx-auto">
@@ -76,7 +76,7 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 	</main>
 	
 	<!-- Services Section -->
-	<section class="py-16 bg-white">
+	<section class="py-9 bg-white">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
 				<Heading level={2} size="3xl" class="mb-4">
@@ -87,7 +87,7 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 				</Text>
 			</div>
 			
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-5">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				<Card
 					title="💻 Desarrollo Full Stack"
 					body="Diseño y programación de aplicaciones web y móviles, desde la idea hasta el despliegue en producción."
@@ -128,6 +128,7 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 							technologies={project.technologies}
 							githubUrl={project.githubUrl}
 							demoUrl={project.demoUrl}
+							image={project.image}
 							projectCategory={project.projectCategory}
 							category={project.category as 'primary' | 'warning' | 'danger'}
 						/>

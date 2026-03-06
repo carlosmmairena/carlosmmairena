@@ -34,7 +34,7 @@ const formattedDate = frontmatter.pubDate.toLocaleDateString('es-ES', {
 
 	<body class="font-sans bg-white text-gray-900">
 		<!-- Hero Section con imagen de fondo -->
-		<div class="relative bg-gradient-to-br from-blue-50 to-purple-50 py-12">
+		<div class="relative bg-linear-to-br from-blue-50 to-purple-50 py-12">
 			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 				<!-- Breadcrumb -->
 				<div class="mb-6">
@@ -86,12 +86,13 @@ const formattedDate = frontmatter.pubDate.toLocaleDateString('es-ES', {
 
 		<!-- Featured Image -->
 		{frontmatter.image && frontmatter.image.url && (
-			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-10">
+			<div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-4 -mt-4 mb-10">
 				<div class="rounded-xl overflow-hidden shadow-xl">
 					<RemoteImage 
 						src={frontmatter.image.url} 
 						alt={frontmatter.image.alt || frontmatter.title}
-						class="w-5xl h-auto object-cover"
+						class="w-2xl h-auto object-cover"
+						loading='eager'
 					/>
 				</div>
 			</div>

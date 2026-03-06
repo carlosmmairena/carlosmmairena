@@ -68,6 +68,7 @@ He organizado el panel de administración en **Ajustes → LDAP Directory** para
 * **Filtros:** Elige qué mostrar (email, cargo, departamento, teléfono).
 * **Control de Caché:** Tú decides el tiempo de vida (TTL) de los datos para no sobrecargar el servidor.
 
+![Opciones de pruebas en el plugin de wordpress](/images/posts/ldap-staff-directory/campos-plugin.png)
 
 ## 🔥 Instalación rápida
 

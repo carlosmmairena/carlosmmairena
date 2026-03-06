@@ -39,4 +39,8 @@
     table tbody tr td {
         @apply border-gray-800 border-b p-1;
     }
+    
+    p img {
+        @apply max-w-100 h-auto shadow-xl rounded-md;
+    }
 }

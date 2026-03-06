@@ -1,0 +1,12 @@
+{
+  "title": "LDAP Staff Directory Plugin WordPress",
+  "description": "Plugin de código abierto que conecta tu WordPress con tu servidor LDAP para mostrar a tu equipo en tiempo real en tu sitio web.",
+  "technologies": ["WordPress", "LDAP", "PHP"],
+  "githubUrl": "https://github.com/carlosmmairena/ldap-staff-directory",
+  "demoUrl": "",
+  "projectCategory": "Web",
+  "category": "primary",
+  "image": "/images/posts/ldap-staff-directory/campos-plugin.png",
+  "featured": true,
+  "order": 4
+}
