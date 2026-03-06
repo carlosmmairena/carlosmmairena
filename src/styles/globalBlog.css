@@ -19,8 +19,20 @@
         @apply text-gray-800 leading-relaxed mb-6;
     }
     
-    a {
+    strong a {
         @apply hover:text-blue-800 hover:underline;
-        @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
+        @apply bg-linear-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
+    }
+
+    table {
+        @apply mt-5 mb-10;
+    }
+
+    table thead tr th {
+        @apply border-gray-800 border-b border-t p-1;
+    }
+
+    table tbody tr td {
+        @apply border-gray-800 border-b p-1;
     }
 }

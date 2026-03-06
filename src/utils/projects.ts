@@ -45,7 +45,7 @@ export async function getProjectStats() {
   
   const stats = {
     total: projects.length,
-    webApps: projects.filter(p => p.projectCategory === 'Web Apps').length,
+    webApps: projects.filter(p => p.projectCategory === 'Web').length,
     infrastructure: projects.filter(p => p.projectCategory === 'Infrastructure Projects').length,
     security: projects.filter(p => p.projectCategory === 'Security Tools').length,
   };

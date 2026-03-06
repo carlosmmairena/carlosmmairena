@@ -104,7 +104,7 @@ const projects = await getFeaturedProjects();
 ```
 ## 📊 Categorías de Proyectos
 
-- **Web Apps**: Aplicaciones web frontend/fullstack
+- **Web**: Aplicaciones web frontend/fullstack
 - **Infrastructure Projects**: Proyectos de DevOps, cloud, infrastructure as code
 - **Security Tools**: Herramientas de ciberseguridad, auditoría, pentesting
 
