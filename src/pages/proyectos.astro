@@ -17,7 +17,7 @@ const projectCategories = ["Todos", "Web", "Infrastructure", "Security Tools"];
 
 <Layout title="Proyectos | Carlos Mairena" currentPath="/proyectos">
 	<!-- Hero Section -->
-	<section class="bg-linear-to-br from-blue-50 to-purple-50 py-16">
+	<section class="bg-linear-to-br from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 py-16">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center">
 				<Heading level={1} class="mb-6">
@@ -31,14 +31,14 @@ const projectCategories = ["Todos", "Web", "Infrastructure", "Security Tools"];
 	</section>
 	
 	<!-- Filter Section -->
-	<section class="py-8 bg-white border-b border-gray-200">
+	<section class="py-8 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center">
 				<Text color="secondary" class="mb-4">Filtrar por categoría:</Text>
 				<div class="flex flex-wrap justify-center gap-3">
 					{projectCategories.map(category => (
 						<button 
-							class="filter-btn px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+							class="filter-btn px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
 							data-category={category}
 						>
 							{category}
@@ -50,23 +50,23 @@ const projectCategories = ["Todos", "Web", "Infrastructure", "Security Tools"];
 	</section>
 	
 	<!-- Projects Grid -->
-	<main class="py-16 bg-gray-50">
+	<main class="py-16 bg-gray-50 dark:bg-gray-800">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<!-- Stats Section -->
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
+				<div class="text-center p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
 					<div class="text-3xl font-bold text-blue-600 mb-2">{projectStats.total}</div>
 					<Text color="secondary" size="sm">Proyectos Totales</Text>
 				</div>
-				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
+				<div class="text-center p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
 					<div class="text-3xl font-bold text-green-600 mb-2">{projectStats.webApps}</div>
 					<Text color="secondary" size="sm">Web</Text>
 				</div>
-				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
+				<div class="text-center p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
 					<div class="text-3xl font-bold text-yellow-600 mb-2">{projectStats.infrastructure}</div>
 					<Text color="secondary" size="sm">Infraestructura</Text>
 				</div>
-				<div class="text-center p-6 bg-white rounded-lg shadow-sm">
+				<div class="text-center p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
 					<div class="text-3xl font-bold text-red-600 mb-2">{projectStats.security}</div>
 					<Text color="secondary" size="sm">Seguridad</Text>
 				</div>

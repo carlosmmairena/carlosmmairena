@@ -24,7 +24,7 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 
 <Layout title="Inicio | Carlos Mairena" currentPath="/">
 	<!-- Hero Section -->
-	<main class="bg-linear-to-br from-blue-50 to-purple-50 py-20">
+	<main class="bg-linear-to-br from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 py-20">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center">
 				<!-- Foto profesional -->
@@ -76,7 +76,7 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 	</main>
 	
 	<!-- Services Section -->
-	<section class="py-9 bg-white">
+	<section class="py-9 bg-white dark:bg-gray-900">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
 				<Heading level={2} size="3xl" class="mb-4">
@@ -106,7 +106,7 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 	
 	<!-- Featured Projects Section -->
 	{featuredProjects.length > 0 && (
-		<section class="py-16 bg-white">
+		<section class="py-16 bg-white dark:bg-gray-900">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="text-center mb-12">
 					<Heading level={2} size="3xl" class="mb-4">
@@ -139,7 +139,7 @@ const latestPosts = (await getCollection("posts")).sort((a: any, b: any) =>
 	)}
 
 	<!-- Blog Section -->
-	<section class="py-16 bg-gray-50">
+	<section class="py-16 bg-gray-50 dark:bg-gray-900">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
 				<Heading level={2} size="3xl" class="mb-4">

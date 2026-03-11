@@ -305,6 +305,76 @@ All transitions use `duration-200` or `duration-300`. No spring/bounce.
 
 ---
 
+## Dark Mode
+
+Dark mode is class-based (`dark` class on `<html>`), toggled via a sun/moon button in the Header and persisted to `localStorage`. OS `prefers-color-scheme` is the fallback for first-time visitors. The `@custom-variant dark` rule in `global.css` enables `dark:` utility variants site-wide.
+
+### Dark Color Palette
+
+Parallel to the light palette. Use these tokens when adding new UI — never pick ad-hoc dark values.
+
+| Role | Light value | Dark value |
+|---|---|---|
+| Surface (body / regular sections) | `white` | `gray-900` |
+| Surface elevated (cards, panels) | `white` | `gray-800` |
+| Surface muted (alternating sections) | `gray-50` | `gray-900` ← same as body |
+| Surface input / placeholder bg | `gray-100` | `gray-700` |
+| Border default | `gray-200` | `gray-700` |
+| Border emphasis | `gray-300` | `gray-600` |
+| Text primary | `gray-900` | `gray-100` |
+| Text secondary | `gray-700` | `gray-300` |
+| Text muted | `gray-600` | `gray-400` |
+| Text placeholder | `gray-400` | `gray-500` |
+| Focus ring offset | `white` | `gray-900` |
+
+### Semantic Badge Colors (dark)
+
+| Variant | Dark background | Dark text |
+|---|---|---|
+| `primary` | `blue-900` | `blue-200` |
+| `secondary` | `gray-700` | `gray-200` |
+| `success` | `green-900` | `green-200` |
+| `warning` | `yellow-900` | `yellow-200` |
+| `danger` | `red-900` | `red-200` |
+
+### Surface Hierarchy Rule
+
+In light mode, depth is created by alternating section backgrounds (`white` / `gray-50`) plus card shadows. **In dark mode, alternating section backgrounds are not used.** All sections — regular and alternating — share the same `gray-900` background. Card elevation (`gray-800` + `border-gray-700` + `shadow-sm`) provides the visual separation.
+
+```
+Light mode:                        Dark mode:
+──────────────────────             ──────────────────────
+body:          white               body:          gray-900
+section:       white               section:       gray-900
+section muted: gray-50             section muted: gray-900  ← same!
+card:          white + shadow  →   card:          gray-800 + border + shadow
+```
+
+**Why**: If sections and cards share the same dark shade, cards become invisible. The rule is: `bg-gray-50 dark:bg-gray-900` (never `dark:bg-gray-800`) for alternating sections.
+
+### Already-Dark Components
+
+Some components are intentionally dark in both modes and do not need a dark variant — or need only a subtle shift:
+
+| Component | Light | Dark | Reason |
+|---|---|---|---|
+| `Footer` | `bg-blue-900` | `bg-blue-950` | Already dark; minor darkening preserves navy brand |
+| `prose-pre` (code blocks) | `bg-gray-900` | unchanged | Already dark |
+
+### Checklist for New Features
+
+When adding new UI, verify each of the following:
+
+- [ ] **Section background**: Uses `bg-white dark:bg-gray-900` (regular) or `bg-gray-50 dark:bg-gray-900` (alternating). Never `dark:bg-gray-800` for sections.
+- [ ] **Card / panel surface**: Uses `bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700`.
+- [ ] **Text**: Prefer `<Text>`, `<Heading>` atoms — they handle dark automatically. For inline text: add `dark:text-*` counterpart.
+- [ ] **Links**: Use `<Link>` atom. For raw `<a>`: add `dark:text-blue-400 dark:hover:text-blue-300`.
+- [ ] **Icon containers / accent boxes**: `bg-blue-100 dark:bg-blue-900` or `bg-gray-200 dark:bg-gray-700`.
+- [ ] **Borders**: `border-gray-200 dark:border-gray-700` (default) or `border-gray-300 dark:border-gray-600` (emphasis).
+- [ ] **Already-dark component?**: If the element uses `text-white` and a dark brand color, check the table above — it may not need a dark variant.
+
+---
+
 ## Responsive Strategy
 
 Mobile-first. Breakpoints used:
