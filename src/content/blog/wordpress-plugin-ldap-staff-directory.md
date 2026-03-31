@@ -32,6 +32,26 @@ No es solo un conector; es una herramienta pensada para que no pierdas tiempo en
 * **Caché inteligente:** Si tu servidor LDAP se cae un momento, ¡no pasa nada! El plugin sirve los datos almacenados para que tus usuarios no vean un error. ⚡
 * **Cero complicaciones:** Soporta certificados autofirmados (puedes subir tu propio `.pem` o `.crt`) y filtra automáticamente las cuentas deshabilitadas de AD.
 
+## 🚀 Instalación rápida
+
+He simplificado el proceso para que no tengas que tocar ni una carpeta del servidor. Tienes dos formas de empezar:
+
+### Opción A: Directo desde tu WordPress (Recomendado) 💻
+1. Entra al panel de administración de tu sitio.
+2. Ve a **Plugins → Añadir nuevo**.
+3. En el buscador, escribe: `LDAP Staff Directory`.
+4. Haz clic en **Instalar ahora** y luego en **Activar**. ¡Y listo!
+
+### Opción B: Descarga manual 📥
+Si prefieres el método tradicional o quieres revisar el código antes, puedes bajarlo desde:
+* **Tienda oficial:** [wordpress.org/plugins/ldap-staff-directory](https://wordpress.org/plugins/ldap-staff-directory)
+* **Repositorio GitHub:** [github.com/carlosmmairena/ldap-staff-directory](https://github.com/carlosmmairena/ldap-staff-directory)
+
+### Pasos finales
+* Una vez activado, ve a **Ajustes → LDAP Directory**.
+* Configura tus datos de conexión y usa el botón **Test Connection** para verificar que todo esté en orden.
+* ¡Inserta el shortcode `[ldap_directory]` o usa el widget de tu constructor favorito y disfruta de la automatización! ⚡
+
 
 ## 🎨 Personalización a tu medida
 
@@ -69,15 +89,6 @@ He organizado el panel de administración en **Ajustes → LDAP Directory** para
 * **Control de Caché:** Tú decides el tiempo de vida (TTL) de los datos para no sobrecargar el servidor.
 
 ![Opciones de pruebas en el plugin de wordpress](/images/posts/ldap-staff-directory/campos-plugin.png)
-
-## 🔥 Instalación rápida
-
-1. Descarga el plugin desde mi 📥 **[repo en GitHub](https://github.com/carlosmmairena/ldap-staff-directory)**.
-2. Súbelo a tu carpeta de plugins y actívalo.
-3. Configura tus datos en **Ajustes → LDAP Directory**.
-4. ¡Listo! Usa el shortcode o el widget y disfruta de tu directorio automatizado.
-
-> **Nota:** Estamos trabajando para que pronto esté disponible en la tienda oficial de **WordPress.org**. ¡Estate atento!
 
 ---
 
