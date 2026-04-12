@@ -66,13 +66,13 @@ const {
 		<!-- Action Buttons -->
 		<div class="flex space-x-3">
 			{githubUrl && (
-				<Button variant="outline" size="sm" href={githubUrl} class="flex-1">
+				<Button variant="outline" size="sm" href={githubUrl} external={true} class="flex-1">
 					<Icon name="github" size="sm" class="mr-2" />
 					Código
 				</Button>
 			)}
 			{demoUrl && (
-				<Button variant="primary" size="sm" href={demoUrl} class="flex-1">
+				<Button variant="primary" size="sm" href={demoUrl} external={true} class="flex-1">
 					<Icon name="external-link" size="sm" class="mr-2" />
 					Demo
 				</Button>

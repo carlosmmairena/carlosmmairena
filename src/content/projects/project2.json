@@ -1,0 +1,12 @@
+{
+  "title": "Agranda",
+  "description": "Sitio web oficial de Agranda. Insumos Agrícolas y Ferretería en Escuintla, Guatemala",
+  "technologies": ["Astro", "Tailwindcss"],
+  "githubUrl": "",
+  "demoUrl": "https://agrandate.com",
+  "projectCategory": "Web",
+  "category": "primary",
+  "image": "/images/projects/agrandawebsite.png",
+  "featured": true,
+  "order": 2
+}

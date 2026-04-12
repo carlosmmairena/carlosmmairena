@@ -1,4 +1,6 @@
 ---
+import { undefined } from 'astro:schema';
+
 interface Props {
 	variant?: 'primary' | 'secondary' | 'outline';
 	size?: 'sm' | 'md' | 'lg';
@@ -40,8 +42,9 @@ const Element = href ? 'a' : 'button';
 <Element 
 	class={classes}
 	href={href}
-	target={external ? '_blank' : undefined}
-	type={!href ? type : undefined}
+	target={external ? '_blank' : null}
+	rel={external ? "noopener noreferrer" : ""}
+	type={!href ? type : null}
 	{...props}
 >
 	<slot />
