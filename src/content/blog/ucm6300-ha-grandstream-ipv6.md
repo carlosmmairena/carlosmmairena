@@ -1,5 +1,5 @@
 ---
-title: 'UCM6300 HA + IPv6 — Orden correcto de configuración (comportamiento no documentado, confirmado en producción) ☎️'
+title: 'UCM6300 HA + IPv6 — confirmado en producción ☎️'
 pubDate: 2026-09-13
 description: 'Les comparto el procedimiento correcto para que IPv6 funcione en un cluster HA con UCM6300...'
 author: 'Carlos Mairena'
