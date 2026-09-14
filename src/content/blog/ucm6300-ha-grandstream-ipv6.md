@@ -11,7 +11,7 @@ tags: ["ucm6300", "ipv6", "voip", "ha"]
 
 Hola a todos,
 
-Luego de pruebas exhaustivas en un ambiente de producción, quiero compartir el procedimiento correcto para que IPv6 funcione en un cluster HA con UCM6300. Hay una configuración documentada por Grandstream — sin embargo, considero que la documentación oficial únicamente menciona que ambas centrales deben tener una dirección IPv6 estática antes de habilitar la opción, pero no explica un orden o el mecanismo a detalle detrás del funcionamiento.
+Luego de pruebas exhaustivas en un ambiente de producción, quiero compartir el procedimiento correcto para que IPv6 funcione en un cluster HA con UCM6300. Hay una configuración documentada por Grandstream — sin embargo, considero que la documentación oficial únicamente menciona que ambas centrales deben tener una dirección IPv6 estática antes de habilitar la opción, pero no explica un orden o el mecanismo a detalle detrás del funcionamiento.  
 
 ---
 
@@ -19,13 +19,13 @@ Luego de pruebas exhaustivas en un ambiente de producción, quiero compartir el 
 
 El cluster HA **no genera ni calcula una VIP IPv6 independiente**. El comportamiento real es el siguiente:
 
-- La dirección IPv6 configurada en el nodo Primary es tratada como cualquier otro parámetro de configuración del sistema.
-- Cuando se habilita `Enable IPv6` en la configuración de HA, esa configuración IPv6 se replica al Secondary como parte del proceso de sincronización estándar.
-- Ambos nodos quedan con la **misma dirección IPv6** en su configuración interna.
-- El Secondary tiene esa IPv6 configurada pero **inactiva** a nivel de interfaz de red.
-- Cuando ocurre un failover y el Secondary asume el rol Active, **activa** la dirección IPv6 en su interfaz LAN.
+* La dirección IPv6 configurada en el nodo Primary es tratada como cualquier otro parámetro de configuración del sistema.
+* Cuando se habilita `Enable IPv6` en la configuración de HA, esa configuración IPv6 se replica al Secondary como parte del proceso de sincronización estándar.
+* Ambos nodos quedan con la **misma dirección IPv6** en su configuración interna.
+* El Secondary tiene esa IPv6 configurada pero **inactiva** a nivel de interfaz de red.
+* Cuando ocurre un failover y el Secondary asume el rol Active, **activa** la dirección IPv6 en su interfaz LAN.
 
-Esto significa que la IPv6 no es una VIP calculada de forma independiente (como sucede en IPv4) — es la IP estática del Primary, heredada por el Secondary y activada selectivamente cuando corresponde.
+Esto significa que la IPv6 no es una VIP calculada de forma independiente (como sucede en IPv4) — es la IP estática del Primary, heredada por el Secondary y activada selectivamente cuando corresponde.  
 
 ---
 
@@ -49,7 +49,7 @@ Para este orden no recomiendo saltarse pasos o invertirlos, luego que se compren
 
 ---
 
-**Algo importante:**
+**Algo importante:**  
 
 Si se intenta configurar IPv6 antes de que el cluster HA esté completamente sincronizado en IPv4, se está configurando un nodo de forma independiente — no como miembro del cluster. La IPv6 no se va a propagar porque el canal de sincronización aún no está establecido. El cluster debe estar completamente operativo en IPv4 primero.
 
