@@ -12,8 +12,6 @@ Si gestionas un sitio en WordPress, seguro que conoces el dolor de cabeza que si
 
 He creado **LDAP Staff Directory** precisamente para terminar con eso. Es un plugin de código abierto que conecta tu WordPress con tu servidor LDAP (Active Directory u OpenLDAP) para mostrar a tu equipo en tiempo real, de forma elegante y totalmente automática.
 
-La verdad me emociona mucho compartir esta creación 😄
-
 ## 💡 ¿Para quién es este plugin?
 
 Si te encuentras en alguna de estas situaciones, este plugin te va a encantar:
@@ -27,7 +25,7 @@ Si te encuentras en alguna de estas situaciones, este plugin te va a encantar:
 
 No es solo un conector; es una herramienta pensada para que no pierdas tiempo en configuraciones complejas de servidor.
 
-* **Sincronización total:** Consulta los datos y los renderiza en tarjetas con búsqueda y paginación.
+* **Navegación por departamentos:** Tus visitantes primero ven un menú con los departamentos y cuántas personas hay en cada uno; al entrar a uno, encuentran búsqueda y paginación listas para usar.
 * **Seguridad:** La contraseña de tu cuenta de servicio LDAP se resguarda de forma segura. Implementé el **Cifrado XSalsa20-Poly1305** para protegerla en reposo, derivando claves dinámicamente de tus salts de WordPress. 🔒
 * **Caché inteligente:** Si tu servidor LDAP se cae un momento, ¡no pasa nada! El plugin sirve los datos almacenados para que tus usuarios no vean un error. ⚡
 * **Cero complicaciones:** Soporta certificados autofirmados (puedes subir tu propio `.pem` o `.crt`) y filtra automáticamente las cuentas deshabilitadas de AD.
@@ -66,7 +64,7 @@ Usa `[ldap_directory]` donde quieras.
 
 ### Constructores de páginas (En mejora constante) 👷‍♂️
 
-* **Elementor:** Tienes un widget nativo con controles de colores, tipografías, sombras y bordes.
+* **Elementor:** Tienes un widget nativo con previsualización en vivo.
 * **Beaver Builder:** Módulo nativo con previsualización en vivo para que veas los cambios mientras los haces.
 
 ---
@@ -88,7 +86,28 @@ He organizado el panel de administración en **Ajustes → LDAP Directory** para
 * **Filtros:** Elige qué mostrar (email, cargo, departamento, teléfono).
 * **Control de Caché:** Tú decides el tiempo de vida (TTL) de los datos para no sobrecargar el servidor.
 
+*Configuración:*
 ![Opciones de pruebas en el plugin de wordpress](/images/posts/ldap-staff-directory/campos-plugin.png)
+
+
+*Cómo se ve*
+![Visualización del directori](/images/posts/ldap-staff-directory/example-directory.png)
+
+---
+
+## 🆕 Lo que ha mejorado desde el lanzamiento
+
+Desde que lo lancé no he parado de recibir feedback (¡gracias! 🙏) y varias de esas conversaciones se convirtieron en funcionalidades reales:
+
+* **Directorio por departamentos:** Ya no muestro un listado plano de golpe. Ahora tus visitantes ven primero un menú con los departamentos y cuántas personas hay en cada uno, y entran al que les interesa. Mucho más ordenado si tu organización tiene decenas o cientos de personas.
+* **Ajustes más amigables:** Reorganicé todo en pestañas (Conexión, Empleados, Campos) con explicaciones en lenguaje sencillo junto a cada campo técnico — no necesitas saber qué es un `Bind DN` para configurarlo. Las opciones avanzadas quedan ocultas hasta que las necesitas.
+* **"Copiar solicitud para TI":** Si administras el sitio pero no el servidor LDAP, este botón te arma un mensaje listo para copiar y pegar, pidiéndole al equipo de TI justo los datos de conexión que te faltan.
+* **Orden de empleados a tu gusto:** Puedes decidir si se listan por nombre o por cargo, y en qué dirección — ascendente o descendente.
+* **Control fino de departamentos:** Excluye los que no quieres mostrar (por ejemplo, cuentas de servicio o departamentos internos) y elige si el listado se ordena alfabéticamente o por cantidad de personas.
+* **Campo de extensión telefónica:** Si usas una central telefónica (PBX/IP-PBX), ahora puedes mostrar el anexo de cada empleado junto a su teléfono.
+* **Listo para directorios grandes:** Si tu LDAP tiene más de mil usuarios, el plugin ahora pagina las consultas del lado del servidor para no saturar la conexión ni tu sitio.
+
+Como siempre, todo esto llega vía actualización automática desde el repositorio de plugins de WordPress — no tienes que hacer nada más que darle a "Actualizar" en tu instalación de WordPress. 🔄
 
 ---
 
